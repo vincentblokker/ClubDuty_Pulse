@@ -3,6 +3,22 @@
 Anonieme peer-feedback voor sportteams. Spelers geven elkaar **2 sterke punten** en **1 verbeterpunt**.  
 Coaches krijgen directe **teamthema’s** en **per-speler bullets** (zonder namen).
 
+## How to Run
+
+To run the `main.py` script, execute the following command in your terminal:
+
+```bash
+python main.py
+```
+
+## How to Test
+
+To run the tests for this project, execute the following command in your terminal:
+
+```bash
+pytest test_main.py
+```
+
 ## ✨ Waarom
 Snelle, eerlijke input uit het team, zonder drama. Coach ziet patronen, team krijgt duidelijke thema’s.
 
@@ -94,8 +110,8 @@ GET  /rounds/:id/export.csv|pdf  -> download
 
 
 🎨 DaisyUI
-	-	Thema volgt ClubDuty (primary/secondary idem).
-	-	Componenten via wrappers in src/components/ui:
+	- 	Thema volgt ClubDuty (primary/secondary idem).
+	- 	Componenten via wrappers in src/components/ui:
 ```tsx
 <button className="btn btn-primary btn-soft">Versturen</button>
 <div className="card card-bordered">...</div>
@@ -103,22 +119,20 @@ GET  /rounds/:id/export.csv|pdf  -> download
 
 
 ✅ UX-richtlijnen
-	-	Max 140 tekens per veld, met voorbeeld-placeholders.
-	-	Geen namen in team-summary exports.
-	-	Confetti op submit (laag­drempelig, high-five effect).
+	- 	Max 140 tekens per veld, met voorbeeld-placeholders.
+	- 	Geen namen in team-summary exports.
+	- 	Confetti op submit (laag­drempelig, high-five effect).
 
 🔒 Security
-	-	JWT + rate limiting + input validation (Zod server-side).
-	-	Anonimiteit: coach-only raw; exports voor team = thema’s zonder namen.
+	- 	JWT + rate limiting + input validation (Zod server-side).
+	- 	Anonimiteit: coach-only raw; exports voor team = thema’s zonder namen.
 
 🚀 Roadmap
-	-	v1: Ronde → invullen → dashboard → export
-	-	v1.1: Per-speler bullets + WhatsApp-generator
-	-	v1.2: PWA + offline cache
-	-	v2: Club-overzicht, i18n, Socket.io live voortgang
-	-	v3: Integratie met ClubDuty (SSO light, trainingsplanner sync)
-
-
+	- 	v1: Ronde → invullen → dashboard → export
+	- 	v1.1: Per-speler bullets + WhatsApp-generator
+	- 	v1.2: PWA + offline cache
+	- 	v2: Club-overzicht, i18n, Socket.io live voortgang
+	- 	v3: Integratie met ClubDuty (SSO light, trainingsplanner sync)
 
 ---
 
@@ -148,7 +162,6 @@ module.exports = {
   },
 }
 ```
-
 
 Mini-package.json (kern)
 
