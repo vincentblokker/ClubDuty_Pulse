@@ -8,14 +8,18 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "echo 'configure app scripts later'",
+    "dev": "concurrently -n web,api -c green,blue \"yarn workspace @clubduty/pulse-web dev\" \"yarn workspace @clubduty/pulse-api dev\"",
+    "dev:web": "yarn workspace @clubduty/pulse-web dev",
+    "dev:api": "yarn workspace @clubduty/pulse-api dev",
+    "build": "yarn workspaces foreach -At run build",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --write .",
-    "ci": "echo 'CI placeholder: lint only' && eslint . --ext .ts,.tsx,.js,.jsx || true"
+    "ci": "yarn lint"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.8.1",
     "@typescript-eslint/parser": "^8.8.1",
+    "concurrently": "^9.0.1",
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
