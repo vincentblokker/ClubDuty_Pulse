@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/health', (_req, res) => {
-  res.json({ ok: true });
+  res.json({ ok: true, env: process.env.NODE_ENV ?? 'dev' });
 });
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 5011;
