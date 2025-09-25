@@ -1,0 +1,42 @@
+# Task ID: 7
+# Title: Develop Coach Dashboard - Progress View
+# Status: pending
+# Dependencies: 4, 6
+# Priority: medium
+# Description: Create the dashboard view that shows the coach the progress of the current feedback round.
+# Details:
+1. Create dashboard component in frontend
+2. Implement endpoint: GET /api/rounds/:id/progress
+3. Build progress visualization showing:
+   - Total players in round
+   - Number of players who completed all assignments
+   - Number of players who partially completed assignments
+   - Number of players who haven't started
+4. Add percentage completion indicator
+5. Create player-level progress table
+6. Implement refresh functionality
+7. Add option to send reminders (placeholder for future enhancement)
+8. Create responsive layout for dashboard
+
+# Test Strategy:
+Test progress calculation with various completion scenarios. Verify that the dashboard updates when new feedback is submitted. Test responsive layout on different screen sizes.
+
+# Subtasks:
+## 1. Ontwikkel frontend dashboardcomponent voor voortgangsweergave [pending]
+### Dependencies: None
+### Description: Bouw de dashboardcomponent in de frontend die de voortgang van de huidige feedbackronde toont, inclusief visualisaties en een tabel met voortgang per speler.
+### Details:
+Implementeer een overzicht met het totaal aantal spelers, aantal spelers die alle opdrachten voltooid hebben, aantal spelers met gedeeltelijke voltooiing, aantal spelers die nog niet gestart zijn, een percentage-indicator en een tabel met voortgang per speler. Zorg voor een responsieve layout.
+
+## 2. Implementeer backend endpoint voor voortgangsdata [pending]
+### Dependencies: 7.1
+### Description: Ontwikkel het backend endpoint GET /api/rounds/:id/progress dat de benodigde voortgangsdata voor de dashboardcomponent levert.
+### Details:
+Zorg dat het endpoint de juiste data teruggeeft: totaal aantal spelers, aantallen per voortgangscategorie, individuele voortgangsstatussen en percentage voltooiing. Test met verschillende scenario's van voortgang.
+
+## 3. Voeg functionaliteit toe voor verversen en herinneringen [pending]
+### Dependencies: 7.2
+### Description: Implementeer een verversfunctie voor het dashboard en voeg een placeholder toe voor het versturen van herinneringen aan spelers.
+### Details:
+Zorg dat de coach het dashboard handmatig kan verversen om de laatste voortgang te zien. Voeg een knop toe voor het versturen van herinneringen (placeholder, nog geen backend-actie).
+

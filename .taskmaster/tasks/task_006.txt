@@ -1,0 +1,44 @@
+# Task ID: 6
+# Title: Build Feedback Form Interface
+# Status: pending
+# Dependencies: 5
+# Priority: high
+# Description: Create the mobile-friendly interface for players to provide anonymous feedback to their assigned teammates.
+# Details:
+1. Create public feedback route that doesn't require authentication
+2. Implement endpoint: GET /api/feedback/:assignmentId (get assignment details)
+3. Build mobile-first feedback form with the following sections:
+   - Player selection (from assigned teammates)
+   - Two strengths input fields with examples
+   - One improvement area input field with examples
+   - Submit button
+4. Add form validation
+5. Implement endpoint: POST /api/feedback (submit feedback)
+6. Create confirmation screen after submission
+7. Add progress indicator showing completed/total assignments
+8. Implement guidance text and examples in the form
+9. Add responsive design for all device sizes
+10. Ensure the form works without authentication for easy access
+
+# Test Strategy:
+Test form submission with valid and invalid data. Verify mobile responsiveness on various device sizes. Test the form access via unique URLs. Verify that feedback is properly stored and associated with assignments.
+
+# Subtasks:
+## 1. Ontwerp en implementeer het mobiele feedbackformulier [pending]
+### Dependencies: None
+### Description: Maak een mobielvriendelijk feedbackformulier met een spelerselectie, twee velden voor sterke punten (met voorbeelden), één veld voor verbeterpunt (met voorbeelden) en een verzendknop. Zorg voor een eenvoudige, duidelijke en touch-vriendelijke interface volgens best practices voor mobiele formulieren.
+### Details:
+Gebruik responsive design zodat het formulier goed werkt op verschillende schermgroottes. Zorg dat knoppen en invoervelden groot genoeg zijn voor touch-interactie. Houd het formulier kort en overzichtelijk, met duidelijke instructies en voorbeeldteksten. Implementeer de GET /api/feedback/:assignmentId endpoint om de juiste teamgenoten te tonen.
+
+## 2. Voeg formulier-validatie en foutafhandeling toe [pending]
+### Dependencies: 6.1
+### Description: Implementeer client-side validatie voor alle invoervelden van het feedbackformulier en zorg voor duidelijke foutmeldingen bij ongeldige of ontbrekende input.
+### Details:
+Controleer of alle verplichte velden zijn ingevuld en of de input voldoet aan de gestelde eisen (zoals minimale lengte). Toon gebruikersvriendelijke foutmeldingen direct onder het betreffende veld. Test validatie op verschillende mobiele apparaten.
+
+## 3. Implementeer feedbackverzending en bevestigingsscherm [pending]
+### Dependencies: 6.2
+### Description: Verzend het ingevulde formulier via de POST /api/feedback endpoint en toon na succesvolle verzending een bevestigingsscherm aan de gebruiker.
+### Details:
+Zorg dat de feedback anoniem wordt verstuurd en correct wordt gekoppeld aan de juiste assignment. Na succesvolle verzending verschijnt een duidelijk bevestigingsbericht of -scherm. Test het volledige proces, inclusief foutafhandeling bij mislukte verzending.
+

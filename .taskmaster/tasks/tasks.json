@@ -1,0 +1,1266 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Setup Project Repository and Environment",
+        "description": "Initialize the project repository with React, Vite, TypeScript, Tailwind CSS, and DaisyUI for frontend and Node.js with Express for backend.",
+        "details": "1. Create a new repository for ClubDuty Pulse\n2. Initialize frontend with: `npm create vite@latest frontend -- --template react-ts`\n3. Add Tailwind CSS: `npm install -D tailwindcss postcss autoprefixer`\n4. Configure Tailwind: `npx tailwindcss init -p`\n5. Install DaisyUI: `npm install daisyui`\n6. Add DaisyUI to tailwind.config.js plugins\n7. Initialize backend with: `npm init -y`\n8. Install Express: `npm install express cors dotenv`\n9. Install TypeScript: `npm install -D typescript @types/express @types/node @types/cors`\n10. Create tsconfig.json for backend\n11. Setup basic folder structure for both frontend and backend\n12. Configure environment variables with .env files\n13. Create basic README.md with project setup instructions",
+        "testStrategy": "Verify that all dependencies install correctly and the development servers start without errors. Test the connection between frontend and backend with a simple health check endpoint.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Repository aanmaken",
+            "description": "Maak een nieuwe Git-repository aan voor het project ClubDuty Pulse.",
+            "dependencies": [],
+            "details": "Initialiseer een lege repository op GitHub, GitLab of een ander platform. Voeg een .gitignore toe voor Node.js en relevante tools.\n<info added on 2025-09-25T10:13:37.280Z>\n# Checklist voor repository aanmaken/valideren (veilig en minimaal)\n\n1) Controleer of we al in een Git-repo zitten\n```bash\ngit rev-parse --is-inside-work-tree || git init\n```\n\n2) Remote koppelen (indien nog niet gezet)\n```bash\ngit remote -v || git remote add origin <git-remote-url>\n```\n\n3) Basis .gitignore (Node, macOS, logs)\n- Voeg/controleer `.gitignore` met o.a.:\n```\nnode_modules/\n.dist/\n.build/\n.DS_Store\n.env\ncoverage/\n.idea/\n.vscode/\n```\n\n4) Eerste commit (indien nodig)\n```bash\ngit add .\ngit commit -m \"chore: init repository\"\n```\n\n5) Standaard branch en push (alleen als remote klaar is)\n```bash\ngit branch -M main\ngit push -u origin main\n```\n\n6) (Optioneel, via GitHub UI) Branch protection rules instellen voor `main`\n- Require PR reviews, status checks (CI) en no direct pushes.\n\nNotities:\n- Deze repo lijkt al te bestaan (er is een `git status` zichtbaar). Als er al wijzigingen open staan, commit/push pas na bevestiging.\n- Volgende subtaak na gereedmelding: 1.2 \"Frontend initialisatie\".\n</info added on 2025-09-25T10:13:37.280Z>",
+            "status": "in-progress",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Frontend initialisatie",
+            "description": "Initialiseer het frontend-project met React, Vite en TypeScript.",
+            "dependencies": [
+              1
+            ],
+            "details": "Gebruik het commando `npm create vite@latest frontend -- --template react-ts` om de frontend-map aan te maken en installeer de initiële dependencies.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Frontend styling setup (Tailwind, DaisyUI)",
+            "description": "Voeg Tailwind CSS en DaisyUI toe aan het frontend-project en configureer deze.",
+            "dependencies": [
+              2
+            ],
+            "details": "Installeer Tailwind CSS, PostCSS en Autoprefixer. Voer `npx tailwindcss init -p` uit. Installeer DaisyUI en voeg deze toe aan de plugins in tailwind.config.js.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Backend initialisatie",
+            "description": "Initialiseer het backend-project met Node.js en Express.",
+            "dependencies": [
+              1
+            ],
+            "details": "Maak een backend-map aan, voer `npm init -y` uit en installeer Express, CORS en dotenv.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Backend dependencies installeren",
+            "description": "Voeg TypeScript en benodigde type-definities toe aan het backend-project.",
+            "dependencies": [
+              4
+            ],
+            "details": "Installeer TypeScript, @types/express, @types/node en configureer tsconfig.json voor het backend-project.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Basis folderstructuur opzetten",
+            "description": "Maak de basis mappenstructuur aan voor frontend en backend.",
+            "dependencies": [
+              2,
+              4
+            ],
+            "details": "Zorg voor een duidelijke scheiding tussen frontend en backend. Maak mappen aan zoals src, public, routes, controllers, models (backend) en src, components, assets (frontend).",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Basis README en documentatie schrijven",
+            "description": "Schrijf een eerste README.md met installatie-instructies en projectoverzicht.",
+            "dependencies": [
+              1,
+              2,
+              4,
+              6
+            ],
+            "details": "Beschrijf in de README het doel van het project, de gebruikte technologieën, installatie- en opstartinstructies voor frontend en backend.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Setup MongoDB and Database Models",
+        "description": "Set up MongoDB connection and define the data models for Team, Player, Round, Assignment, Feedback, SummaryTeam, and SummaryPlayer using Mongoose.",
+        "details": "1. Install Mongoose: `npm install mongoose`\n2. Create database connection module in backend\n3. Define Mongoose schemas for each model:\n   - Team: { name, code, token, players, rounds }\n   - Player: { name, email, team }\n   - Round: { name, team, status, startDate, endDate, assignments }\n   - Assignment: { round, rater, ratees }\n   - Feedback: { assignment, ratee, strengths: [string], improvement: string }\n   - SummaryTeam: { round, themes: [{ name, count, examples }] }\n   - SummaryPlayer: { player, round, strengths: [string], improvements: [string] }\n4. Implement model relationships and references\n5. Create database initialization script\n6. Add validation rules to schemas\n7. Implement indexes for performance optimization",
+        "testStrategy": "Write unit tests for each model to verify schema validation, relationships, and CRUD operations. Test database connection with both success and failure scenarios.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "MongoDB installatie",
+            "description": "Installeer MongoDB op de ontwikkelomgeving en zorg dat de database draait.",
+            "dependencies": [],
+            "details": "Download en installeer de juiste versie van MongoDB voor het besturingssysteem. Start de MongoDB service en controleer of deze bereikbaar is.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Connectie module",
+            "description": "Implementeer een module voor het opzetten van de verbinding tussen de applicatie en MongoDB via Mongoose.",
+            "dependencies": [
+              1
+            ],
+            "details": "Maak een apart bestand (bijv. db.js) waarin de Mongoose connectie wordt opgezet met foutafhandeling en logging.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Modeldefinities per entiteit",
+            "description": "Definieer Mongoose modellen voor alle entiteiten: Team, Player, Round, Assignment, Feedback, SummaryTeam, SummaryPlayer.",
+            "dependencies": [
+              2
+            ],
+            "details": "Maak voor elke entiteit een apart schema-bestand met de juiste velden en types volgens de projectbeschrijving.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Relaties en referenties",
+            "description": "Implementeer de relaties tussen de modellen met behulp van referenties (ObjectId's) in de schemas.",
+            "dependencies": [
+              3
+            ],
+            "details": "Gebruik Mongoose ref-velden om relaties tussen documenten te leggen, zoals spelers in een team of feedback gekoppeld aan assignments.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Validatie",
+            "description": "Voeg validatieregels toe aan de schemas om dataconsistentie te waarborgen.",
+            "dependencies": [
+              3
+            ],
+            "details": "Gebruik Mongoose validatie-opties zoals required, enum, min/max, en custom validators waar nodig.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Indexering",
+            "description": "Definieer indexen op relevante velden om zoekopdrachten te optimaliseren.",
+            "dependencies": [
+              3
+            ],
+            "details": "Voeg indexen toe in de schemas, bijvoorbeeld op unieke codes, e-mails of combinaties van velden die vaak worden gezocht.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Initialisatie script",
+            "description": "Schrijf een script om de database te initialiseren met testdata en basisstructuren.",
+            "dependencies": [
+              3
+            ],
+            "details": "Maak een seed-script dat enkele teams, spelers, rondes en andere entiteiten toevoegt voor ontwikkel- en testdoeleinden.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Unit tests",
+            "description": "Implementeer unit tests voor alle modellen, inclusief validatie, relaties en CRUD-operaties.",
+            "dependencies": [
+              3,
+              4,
+              5
+            ],
+            "details": "Gebruik een testframework zoals Jest of Mocha om de werking van de modellen en de databaseconnectie te verifiëren.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Foutafhandeling",
+            "description": "Implementeer centrale foutafhandeling voor database-operaties en modelvalidatie.",
+            "dependencies": [
+              2,
+              3,
+              4,
+              5,
+              8
+            ],
+            "details": "Zorg voor duidelijke foutmeldingen en logging bij connectieproblemen, validatiefouten en CRUD-operaties.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Implement Authentication System",
+        "description": "Create the authentication system that allows coaches to log in using team code and token.",
+        "details": "1. Create authentication middleware for Express\n2. Implement JWT token generation and validation\n3. Create login endpoint: POST /api/auth/login\n   - Request body: { teamCode, token }\n   - Response: { success, token, team }\n4. Add authentication routes to Express router\n5. Implement session management\n6. Create protected route middleware\n7. Build frontend login form component with validation\n8. Implement authentication context in React for state management\n9. Add token storage in localStorage or cookies\n10. Create authentication service in frontend\n11. Implement logout functionality\n12. Add route protection in frontend",
+        "testStrategy": "Test login with valid and invalid credentials. Verify JWT token generation and validation. Test protected routes with and without authentication. Test token expiration and refresh logic.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Ontwikkel Express authenticatie-middleware",
+            "description": "Maak middleware die teamcode en token valideert bij elke loginpoging en beschermt routes tegen ongeautoriseerde toegang.",
+            "dependencies": [],
+            "details": "Gebruik Express.js om een middleware te schrijven die controleert of het verzoek een geldige teamcode en token bevat. Implementeer JWT-validatie en zorg dat alleen geauthenticeerde coaches toegang krijgen tot beschermde routes.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implementeer login endpoint en sessiebeheer",
+            "description": "Maak een POST /api/auth/login endpoint dat teamcode en token accepteert, genereer een JWT bij succesvolle login en beheer sessies.",
+            "dependencies": [
+              1
+            ],
+            "details": "Ontwikkel een login endpoint in Express dat de ontvangen teamcode en token valideert. Bij succes wordt een JWT gegenereerd en teruggestuurd. Implementeer sessiebeheer zodat ingelogde coaches hun authenticatie behouden.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Bouw frontend loginformulier en authenticatiecontext",
+            "description": "Maak een React loginformulier met validatie en implementeer een authenticatiecontext voor het beheren van de loginstatus en tokenopslag.",
+            "dependencies": [
+              2
+            ],
+            "details": "Ontwerp een loginformulier in React dat teamcode en token valideert. Implementeer een context voor authenticatie die de JWT opslaat in localStorage en zorgt dat de loginstatus correct wordt bijgehouden in de frontend.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Implement Round Management",
+        "description": "Develop functionality for coaches to create, open, close, and manage feedback rounds.",
+        "details": "1. Create Round controller with CRUD operations\n2. Implement endpoints:\n   - POST /api/rounds (create new round)\n   - GET /api/rounds (list rounds for a team)\n   - GET /api/rounds/:id (get round details)\n   - PUT /api/rounds/:id (update round)\n   - PUT /api/rounds/:id/status (open/close round)\n3. Build round creation form in frontend\n4. Implement round list view for coaches\n5. Create round detail view with status controls\n6. Add validation for round dates and status changes\n7. Implement round status lifecycle (draft, open, closed)\n8. Create unique URL generation for sharing with players",
+        "testStrategy": "Test round creation, opening, and closing. Verify status transitions and validation rules. Test URL generation and access control. Ensure rounds are properly associated with teams.",
+        "priority": "high",
+        "dependencies": [
+          2,
+          3
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Backend controller ontwikkelen",
+            "description": "Implementeer een backend controller voor het beheer van feedbackrondes met CRUD-functionaliteit.",
+            "dependencies": [],
+            "details": "Maak een RoundController aan in de backend die verantwoordelijk is voor het aanmaken, ophalen, bijwerken en verwijderen van rondes.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "API endpoints implementeren",
+            "description": "Ontwerp en implementeer de benodigde API endpoints voor het beheren van rondes.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implementeer endpoints zoals POST /api/rounds, GET /api/rounds, GET /api/rounds/:id, PUT /api/rounds/:id, en PUT /api/rounds/:id/status.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Frontend formulier voor rondecreatie",
+            "description": "Bouw een frontend formulier waarmee coaches nieuwe rondes kunnen aanmaken.",
+            "dependencies": [
+              2
+            ],
+            "details": "Ontwerp en implementeer een formulier in de frontend voor het invoeren van rondegegevens zoals naam, start- en einddatum.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Lijstweergave van rondes",
+            "description": "Implementeer een frontend lijstweergave waarin alle rondes voor een team worden getoond.",
+            "dependencies": [
+              2
+            ],
+            "details": "Maak een overzichtspagina waar coaches alle bestaande rondes kunnen zien, met basisinformatie en status.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Detailweergave van een ronde",
+            "description": "Implementeer een frontend detailpagina voor een specifieke ronde met statusbeheer.",
+            "dependencies": [
+              4
+            ],
+            "details": "Toon uitgebreide informatie over de geselecteerde ronde en bied knoppen voor openen/sluiten van de ronde.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Validatie van rondegegevens",
+            "description": "Voeg validatie toe voor rondevelden en statusovergangen in backend en frontend.",
+            "dependencies": [
+              3,
+              5
+            ],
+            "details": "Controleer op correcte datums, verplichte velden en geldige statusovergangen bij aanmaken en bewerken.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Status lifecycle implementeren",
+            "description": "Implementeer de volledige statuslevenscyclus van een ronde (bijv. aangemaakt, open, gesloten).",
+            "dependencies": [
+              2,
+              6
+            ],
+            "details": "Zorg dat de status van een ronde correct wordt beheerd en alleen toegestane overgangen mogelijk zijn.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Unieke URL generatie voor rondes",
+            "description": "Implementeer logica voor het genereren van unieke, deelbare URLs voor elke ronde.",
+            "dependencies": [
+              2
+            ],
+            "details": "Zorg dat elke ronde een unieke URL krijgt die gebruikt kan worden voor directe toegang tot de detailpagina.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Toegangsbescherming en autorisatie",
+            "description": "Implementeer toegangscontrole zodat alleen bevoegde coaches rondes kunnen beheren.",
+            "dependencies": [
+              2
+            ],
+            "details": "Gebruik authenticatie- en autorisatiemechanismen om endpoints en frontend functionaliteit te beschermen.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Implement Assignment Algorithm",
+        "description": "Develop the algorithm that randomly assigns 2-3 teammates to each player for feedback, ensuring balanced distribution.",
+        "details": "1. Create assignment service in backend\n2. Implement random assignment algorithm with the following rules:\n   - Each player is assigned to rate 2-3 teammates\n   - Assignments are distributed evenly\n   - No player rates themselves\n   - All players receive feedback from at least 2 teammates\n3. Add support for 'pin' option to ensure specific assignments\n4. Create endpoint: POST /api/rounds/:id/assignments (generate assignments)\n5. Implement assignment validation and error handling\n6. Add functionality to regenerate assignments if needed\n7. Create assignment distribution visualization for coaches",
+        "testStrategy": "Write unit tests with various team sizes to verify algorithm correctness. Test edge cases like small teams (3-4 players) and large teams (20+ players). Verify that all players receive and give feedback. Test the 'pin' functionality.",
+        "priority": "high",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Ontwerp en implementeer het random assignment algoritme",
+            "description": "Ontwikkel een algoritme dat elke speler willekeurig 2-3 teamgenoten toewijst voor feedback, waarbij wordt voldaan aan de eisen: geen zelftoewijzing, elke speler ontvangt feedback van minimaal 2 teamgenoten, en de verdeling is zo evenwichtig mogelijk.",
+            "dependencies": [],
+            "details": "Implementeer de logica in een backend service. Houd rekening met randgevallen zoals kleine teams (3-4 spelers) en grote teams (20+ spelers). Voeg ondersteuning toe voor het 'pinnen' van specifieke toewijzingen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implementeer de API-endpoint voor het genereren van assignments",
+            "description": "Maak een endpoint POST /api/rounds/:id/assignments dat het assignment algoritme aanroept en de gegenereerde toewijzingen opslaat.",
+            "dependencies": [
+              1
+            ],
+            "details": "Zorg voor correcte validatie van input en foutafhandeling. Controleer dat de gegenereerde toewijzingen voldoen aan alle gestelde regels voordat ze worden opgeslagen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Schrijf unit tests en valideer de assignment logica",
+            "description": "Ontwikkel unit tests voor verschillende teamgroottes en scenario's om te verifiëren dat het algoritme correct werkt en aan alle eisen voldoet.",
+            "dependencies": [
+              2
+            ],
+            "details": "Test onder andere op: kleine teams, grote teams, correcte verdeling, geen zelftoewijzing, minimaal 2 feedbackgevers per speler, en de werking van de 'pin' functionaliteit.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Build Feedback Form Interface",
+        "description": "Create the mobile-friendly interface for players to provide anonymous feedback to their assigned teammates.",
+        "details": "1. Create public feedback route that doesn't require authentication\n2. Implement endpoint: GET /api/feedback/:assignmentId (get assignment details)\n3. Build mobile-first feedback form with the following sections:\n   - Player selection (from assigned teammates)\n   - Two strengths input fields with examples\n   - One improvement area input field with examples\n   - Submit button\n4. Add form validation\n5. Implement endpoint: POST /api/feedback (submit feedback)\n6. Create confirmation screen after submission\n7. Add progress indicator showing completed/total assignments\n8. Implement guidance text and examples in the form\n9. Add responsive design for all device sizes\n10. Ensure the form works without authentication for easy access",
+        "testStrategy": "Test form submission with valid and invalid data. Verify mobile responsiveness on various device sizes. Test the form access via unique URLs. Verify that feedback is properly stored and associated with assignments.",
+        "priority": "high",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Ontwerp en implementeer het mobiele feedbackformulier",
+            "description": "Maak een mobielvriendelijk feedbackformulier met een spelerselectie, twee velden voor sterke punten (met voorbeelden), één veld voor verbeterpunt (met voorbeelden) en een verzendknop. Zorg voor een eenvoudige, duidelijke en touch-vriendelijke interface volgens best practices voor mobiele formulieren.",
+            "dependencies": [],
+            "details": "Gebruik responsive design zodat het formulier goed werkt op verschillende schermgroottes. Zorg dat knoppen en invoervelden groot genoeg zijn voor touch-interactie. Houd het formulier kort en overzichtelijk, met duidelijke instructies en voorbeeldteksten. Implementeer de GET /api/feedback/:assignmentId endpoint om de juiste teamgenoten te tonen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Voeg formulier-validatie en foutafhandeling toe",
+            "description": "Implementeer client-side validatie voor alle invoervelden van het feedbackformulier en zorg voor duidelijke foutmeldingen bij ongeldige of ontbrekende input.",
+            "dependencies": [
+              1
+            ],
+            "details": "Controleer of alle verplichte velden zijn ingevuld en of de input voldoet aan de gestelde eisen (zoals minimale lengte). Toon gebruikersvriendelijke foutmeldingen direct onder het betreffende veld. Test validatie op verschillende mobiele apparaten.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Implementeer feedbackverzending en bevestigingsscherm",
+            "description": "Verzend het ingevulde formulier via de POST /api/feedback endpoint en toon na succesvolle verzending een bevestigingsscherm aan de gebruiker.",
+            "dependencies": [
+              2
+            ],
+            "details": "Zorg dat de feedback anoniem wordt verstuurd en correct wordt gekoppeld aan de juiste assignment. Na succesvolle verzending verschijnt een duidelijk bevestigingsbericht of -scherm. Test het volledige proces, inclusief foutafhandeling bij mislukte verzending.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Develop Coach Dashboard - Progress View",
+        "description": "Create the dashboard view that shows the coach the progress of the current feedback round.",
+        "details": "1. Create dashboard component in frontend\n2. Implement endpoint: GET /api/rounds/:id/progress\n3. Build progress visualization showing:\n   - Total players in round\n   - Number of players who completed all assignments\n   - Number of players who partially completed assignments\n   - Number of players who haven't started\n4. Add percentage completion indicator\n5. Create player-level progress table\n6. Implement refresh functionality\n7. Add option to send reminders (placeholder for future enhancement)\n8. Create responsive layout for dashboard",
+        "testStrategy": "Test progress calculation with various completion scenarios. Verify that the dashboard updates when new feedback is submitted. Test responsive layout on different screen sizes.",
+        "priority": "medium",
+        "dependencies": [
+          4,
+          6
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Ontwikkel frontend dashboardcomponent voor voortgangsweergave",
+            "description": "Bouw de dashboardcomponent in de frontend die de voortgang van de huidige feedbackronde toont, inclusief visualisaties en een tabel met voortgang per speler.",
+            "dependencies": [],
+            "details": "Implementeer een overzicht met het totaal aantal spelers, aantal spelers die alle opdrachten voltooid hebben, aantal spelers met gedeeltelijke voltooiing, aantal spelers die nog niet gestart zijn, een percentage-indicator en een tabel met voortgang per speler. Zorg voor een responsieve layout.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implementeer backend endpoint voor voortgangsdata",
+            "description": "Ontwikkel het backend endpoint GET /api/rounds/:id/progress dat de benodigde voortgangsdata voor de dashboardcomponent levert.",
+            "dependencies": [
+              1
+            ],
+            "details": "Zorg dat het endpoint de juiste data teruggeeft: totaal aantal spelers, aantallen per voortgangscategorie, individuele voortgangsstatussen en percentage voltooiing. Test met verschillende scenario's van voortgang.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Voeg functionaliteit toe voor verversen en herinneringen",
+            "description": "Implementeer een verversfunctie voor het dashboard en voeg een placeholder toe voor het versturen van herinneringen aan spelers.",
+            "dependencies": [
+              2
+            ],
+            "details": "Zorg dat de coach het dashboard handmatig kan verversen om de laatste voortgang te zien. Voeg een knop toe voor het versturen van herinneringen (placeholder, nog geen backend-actie).",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Implement Raw Feedback View",
+        "description": "Develop the view that displays all raw, anonymous feedback for each player to the coach.",
+        "details": "1. Create endpoint: GET /api/rounds/:id/feedback\n2. Build raw feedback component in dashboard\n3. Implement player selection dropdown\n4. Display all strengths and improvement areas for selected player\n5. Maintain anonymity by not showing who provided the feedback\n6. Add filtering options (strengths/improvements)\n7. Implement pagination if needed\n8. Create responsive layout for feedback display\n9. Add copy functionality for individual feedback items",
+        "testStrategy": "Test feedback retrieval and display for various players. Verify anonymity is maintained. Test filtering and pagination. Ensure the view works correctly with different amounts of feedback.",
+        "priority": "medium",
+        "dependencies": [
+          6,
+          7
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Backend API ontwikkeling",
+            "description": "Ontwikkel de backend API die ruwe, anonieme feedback per speler ophaalt en ondersteunt filtering, paginering en copy-functionaliteit.",
+            "dependencies": [],
+            "details": "Implementeer een endpoint (GET /api/rounds/:id/feedback) dat alle relevante feedbackgegevens gestructureerd en veilig aanlevert. Zorg voor parameters voor filtering en paginering.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Frontend component bouw",
+            "description": "Bouw het dashboardcomponent dat ruwe feedback per speler toont aan de coach.",
+            "dependencies": [
+              1
+            ],
+            "details": "Ontwerp en implementeer een React-component die feedbackgegevens ophaalt via de API en overzichtelijk weergeeft.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Dropdown implementatie",
+            "description": "Implementeer een dropdown waarmee de coach een speler kan selecteren om diens feedback te bekijken.",
+            "dependencies": [
+              2
+            ],
+            "details": "Maak een dropdown die dynamisch gevuld wordt met spelersnamen en bij selectie de juiste feedback ophaalt en toont.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Feedback weergave",
+            "description": "Zorg voor een duidelijke presentatie van alle sterke punten en verbeterpunten per geselecteerde speler.",
+            "dependencies": [
+              3
+            ],
+            "details": "Toon feedback in gescheiden secties (sterktes/verbeteringen) en zorg voor een overzichtelijke, toegankelijke layout.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Anonimiteit waarborgen",
+            "description": "Implementeer maatregelen zodat de feedback volledig anoniem blijft en niet herleidbaar is tot individuele gevers.",
+            "dependencies": [
+              4
+            ],
+            "details": "Verwijder alle identificerende metadata uit de feedbackweergave en test op mogelijke lekken van herkomstinformatie.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Filtering",
+            "description": "Voeg filteropties toe waarmee coaches feedback kunnen sorteren op type (sterktes/verbeteringen) en eventueel op trefwoord.",
+            "dependencies": [
+              5
+            ],
+            "details": "Implementeer frontend filters en backend query-ondersteuning voor het filteren van feedback.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Paginering",
+            "description": "Implementeer paginering zodat grote hoeveelheden feedback overzichtelijk en performant getoond worden.",
+            "dependencies": [
+              6
+            ],
+            "details": "Voeg paginering toe aan zowel de API als de frontend component, met navigatie tussen pagina's.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Responsive design en copy-functionaliteit",
+            "description": "Zorg dat de feedbackweergave goed werkt op alle schermformaten en implementeer een kopieerknop per feedbackitem.",
+            "dependencies": [
+              7
+            ],
+            "details": "Gebruik responsive CSS en voeg een copy-to-clipboard functie toe aan elk feedbackitem voor eenvoudig delen.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Implement Feedback Clustering Algorithm",
+        "description": "Develop the algorithm that processes feedback and clusters it into general team themes like 'communication' or 'effort'.",
+        "details": "1. Create clustering service in backend\n2. Define predefined themes (communication, effort, teamwork, etc.)\n3. Implement keyword matching algorithm\n4. Add basic NLP functionality to recognize similar phrases\n5. Create theme counting and ranking logic\n6. Implement endpoint: GET /api/rounds/:id/themes\n7. Build theme extraction process that runs when a round is closed\n8. Create database update logic for storing themes\n9. Add example extraction for each theme\n10. Implement fallback for unrecognized feedback",
+        "testStrategy": "Test clustering with various feedback datasets. Verify that similar feedback is grouped correctly. Test edge cases with unusual feedback. Measure clustering accuracy with predefined test cases.",
+        "priority": "medium",
+        "dependencies": [
+          8
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Ontwikkel clusteringservice en definieer thema's",
+            "description": "Bouw de backend clusteringservice en stel vooraf gedefinieerde thema's op zoals 'communicatie', 'inzet' en 'teamwerk'.",
+            "dependencies": [],
+            "details": "Implementeer een backendmodule die feedbackdata ontvangt. Definieer een lijst van thema's en bijbehorende kernwoorden. Zorg dat de service schaalbaar is en eenvoudig thema's kan toevoegen of wijzigen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implementeer algoritme voor thema-extractie en clustering",
+            "description": "Voeg een keyword-matching algoritme en basis NLP-functionaliteit toe om feedback automatisch te groeperen onder relevante thema's.",
+            "dependencies": [
+              1
+            ],
+            "details": "Gebruik keyword matching en eenvoudige NLP-technieken (zoals tokenisatie en synoniemenherkenning) om feedback te koppelen aan thema's. Ontwikkel logica voor het tellen en rangschikken van thema's en zorg dat het proces automatisch wordt uitgevoerd bij het sluiten van een ronde.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Implementeer API-endpoint en database-updates voor thema's",
+            "description": "Maak een endpoint voor het ophalen van thema's per ronde en implementeer database-updates voor het opslaan van themaresultaten.",
+            "dependencies": [
+              2
+            ],
+            "details": "Ontwikkel het endpoint GET /api/rounds/:id/themes. Zorg dat thema's en voorbeeldfeedback per thema worden opgeslagen in de database. Implementeer fallback-logica voor onherkenbare feedback en test het geheel met verschillende datasets.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Develop Team Themes Dashboard",
+        "description": "Create the dashboard view that displays clustered team themes to the coach.",
+        "details": "1. Build team themes component in dashboard\n2. Create theme visualization (bar chart or tag cloud)\n3. Display themes ranked by frequency\n4. Show example feedback for each theme\n5. Implement theme filtering\n6. Add toggle between strengths and improvement themes\n7. Create responsive layout for theme display\n8. Add drill-down functionality to see all feedback in a theme",
+        "testStrategy": "Test theme visualization with various datasets. Verify that themes are correctly ranked and displayed. Test responsive layout on different screen sizes. Verify drill-down functionality.",
+        "priority": "medium",
+        "dependencies": [
+          9
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Dashboard component ontwikkelen",
+            "description": "Implementeer het hoofd-dashboardcomponent waarin alle thematische visualisaties en interacties worden getoond.",
+            "dependencies": [],
+            "details": "Zorg voor een centrale container die de verschillende onderdelen (visualisatie, filtering, ranking, etc.) samenbrengt en de basis vormt voor verdere uitbreidingen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Datavisualisatie (grafiek/tag cloud) bouwen",
+            "description": "Ontwikkel een interactieve grafiek of tag cloud die de teamthema's visueel weergeeft.",
+            "dependencies": [
+              1
+            ],
+            "details": "Kies een geschikte visualisatievorm (bijv. staafdiagram of tag cloud) en implementeer deze met dynamische data-binding.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Themaranking implementeren",
+            "description": "Voeg functionaliteit toe om thema's te rangschikken op basis van frequentie of relevantie.",
+            "dependencies": [
+              2
+            ],
+            "details": "Zorg dat de visualisatie en de themalijst automatisch gesorteerd worden op basis van gekozen ranking-criteria.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Voorbeeldweergave per thema tonen",
+            "description": "Laat per thema een voorbeeld van bijbehorende feedback zien in het dashboard.",
+            "dependencies": [
+              3
+            ],
+            "details": "Implementeer een sectie of popover waarin een representatief feedbackvoorbeeld per thema wordt getoond.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Filtering functionaliteit toevoegen",
+            "description": "Maak het mogelijk om thema's te filteren op basis van eigenschappen zoals type, relevantie of zoektermen.",
+            "dependencies": [
+              4
+            ],
+            "details": "Implementeer filteropties (dropdowns, zoekveld) waarmee gebruikers de getoonde thema's kunnen beperken.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Toggle functionaliteit tussen sterktes en verbeterpunten",
+            "description": "Voeg een schakelaar toe waarmee gebruikers kunnen wisselen tussen sterkte- en verbeterpuntenthema's.",
+            "dependencies": [
+              5
+            ],
+            "details": "Implementeer een duidelijke toggle (bijv. switch of tabs) die de visualisatie en themalijst dynamisch aanpast.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Responsive layout realiseren",
+            "description": "Zorg dat het dashboard en alle componenten goed werken op verschillende schermformaten.",
+            "dependencies": [
+              6
+            ],
+            "details": "Gebruik responsive design principes zodat het dashboard bruikbaar is op desktop, tablet en mobiel.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Drill-down functionaliteit toevoegen",
+            "description": "Maak het mogelijk om door te klikken op een thema en alle bijbehorende feedback te bekijken.",
+            "dependencies": [
+              7
+            ],
+            "details": "Implementeer een drill-down interactie (bijv. modal of detailpagina) waarin alle feedbackitems van een gekozen thema zichtbaar zijn.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Implement CSV Export Functionality",
+        "description": "Develop the functionality to export feedback summaries to CSV format.",
+        "details": "1. Create export service in backend\n2. Implement CSV generation logic\n3. Create endpoint: GET /api/rounds/:id/export/csv\n4. Build export options in frontend (raw feedback, themes, or both)\n5. Implement download functionality\n6. Add filename generation with round name and date\n7. Create CSV structure with appropriate headers\n8. Handle special characters and CSV formatting",
+        "testStrategy": "Test CSV generation with various datasets. Verify file format and content. Test download functionality in different browsers. Verify that special characters are handled correctly.",
+        "priority": "low",
+        "dependencies": [
+          8,
+          10
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Backend export service ontwikkelen",
+            "description": "Ontwikkel een backend service die feedback samenvattingen kan exporteren. Zorg voor een robuuste architectuur die schaalbaar is en eenvoudig te testen.",
+            "dependencies": [],
+            "details": "Implementeer een service in de backend die de benodigde data ophaalt en voorbereidt voor export. Houd rekening met data-integriteit en beveiliging.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "CSV generatie logica implementeren",
+            "description": "Implementeer de logica om data om te zetten naar een correct geformatteerd CSV-bestand, inclusief headers en speciale tekens.",
+            "dependencies": [
+              1
+            ],
+            "details": "Gebruik best practices voor CSV-formattering, zoals consistente scheidingstekens, correcte headers en encoding (bijv. UTF-8). Test met verschillende datasets.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "API endpoint voor CSV export maken",
+            "description": "Maak een API endpoint (GET /api/rounds/:id/export/csv) waarmee de frontend een CSV-export kan opvragen.",
+            "dependencies": [
+              2
+            ],
+            "details": "Implementeer authenticatie en autorisatie op het endpoint. Zorg dat het endpoint het gegenereerde CSV-bestand retourneert als downloadbare response.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Frontend export opties bouwen",
+            "description": "Ontwerp en implementeer frontend UI waarmee gebruikers kunnen kiezen welke data ze willen exporteren (ruwe feedback, thema’s, of beide).",
+            "dependencies": [
+              3
+            ],
+            "details": "Maak een export dialoog of menu met duidelijke opties. Zorg dat de gekozen export parameters worden doorgegeven aan het API endpoint.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Download functionaliteit implementeren",
+            "description": "Implementeer frontend functionaliteit waarmee gebruikers het CSV-bestand kunnen downloaden na export.",
+            "dependencies": [
+              4
+            ],
+            "details": "Zorg voor een goede gebruikerservaring: downloadknop, voortgangsindicator, foutafhandeling. Test in verschillende browsers.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "CSV formatting en encoding optimaliseren",
+            "description": "Optimaliseer de CSV-formattering en encoding zodat het bestand correct wordt weergegeven in alle gangbare spreadsheetprogramma’s.",
+            "dependencies": [
+              2
+            ],
+            "details": "Controleer op correcte headers, scheidingstekens, encoding (UTF-8), en afhandeling van speciale tekens. Test met internationale karakters en grote datasets.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Implement PDF Export Functionality",
+        "description": "Develop the functionality to export feedback summaries to PDF format.",
+        "details": "1. Install PDF generation library (e.g., PDFKit or jsPDF)\n2. Create PDF generation service\n3. Design PDF template with team and round information\n4. Implement endpoint: GET /api/rounds/:id/export/pdf\n5. Add visualization rendering for PDF\n6. Create sections for themes and raw feedback\n7. Implement download functionality in frontend\n8. Add options for content inclusion\n9. Create header and footer with pagination",
+        "testStrategy": "Test PDF generation with various datasets. Verify file format, layout, and content. Test in different browsers. Verify that visualizations are correctly rendered in the PDF.",
+        "priority": "low",
+        "dependencies": [
+          8,
+          10
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "PDF library installatie",
+            "description": "Installeer en configureer een geschikte PDF-generatiebibliotheek (zoals PDFKit of jsPDF) in het backendproject.",
+            "dependencies": [],
+            "details": "Selecteer de juiste library op basis van projectstack en requirements. Voeg de library toe aan de projectdependencies en test een eenvoudige PDF-generatie als proof-of-concept.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Backend PDF service",
+            "description": "Ontwikkel een backendservice die verantwoordelijk is voor het genereren van PDF-bestanden op basis van aangeleverde data.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implementeer een serviceklasse of module die inputdata ontvangt en een PDF-document opbouwt. Zorg voor foutafhandeling en logging.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Template ontwerp",
+            "description": "Ontwerp het PDF-template met team- en ronde-informatie, inclusief header, footer en paginering.",
+            "dependencies": [
+              2
+            ],
+            "details": "Werk samen met het team om het gewenste uiterlijk en de structuur van het PDF-document te bepalen. Implementeer het template in de PDF-service.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Endpoint implementatie",
+            "description": "Implementeer het endpoint GET /api/rounds/:id/export/pdf dat een PDF-bestand retourneert.",
+            "dependencies": [
+              2,
+              3
+            ],
+            "details": "Voeg een nieuwe route toe aan de backend-API die de PDF-service aanroept en het gegenereerde bestand als download aanbiedt.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Visualisatie rendering",
+            "description": "Implementeer de rendering van visualisaties (zoals grafieken) in het PDF-document.",
+            "dependencies": [
+              3
+            ],
+            "details": "Integreer grafiek- of visualisatiecomponenten in het PDF-template. Zorg dat deze correct worden weergegeven in het gegenereerde PDF-bestand.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Frontend download functionaliteit",
+            "description": "Implementeer in de frontend de mogelijkheid om het PDF-bestand te downloaden via een knop of link.",
+            "dependencies": [
+              4
+            ],
+            "details": "Voeg een downloadknop toe aan de gebruikersinterface die het PDF-endpoint aanroept en het bestand aanbiedt aan de gebruiker.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Content-opties",
+            "description": "Voeg opties toe waarmee gebruikers kunnen kiezen welke content (thema's, ruwe feedback, visualisaties) in het PDF-bestand wordt opgenomen.",
+            "dependencies": [
+              3,
+              6
+            ],
+            "details": "Implementeer selectievakjes of keuzemenu's in de frontend en verwerk deze keuzes in de backend zodat alleen de geselecteerde content in het PDF-bestand verschijnt.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Implement WhatsApp Sharing",
+        "description": "Develop functionality to share feedback summaries directly via WhatsApp.",
+        "details": "1. Create text summary generation service\n2. Implement endpoint: GET /api/rounds/:id/summary/text\n3. Build WhatsApp sharing component in frontend\n4. Use WhatsApp Web API for sharing\n5. Create concise text format for themes and key feedback\n6. Add options for content inclusion\n7. Implement character limit handling\n8. Create share button with WhatsApp icon",
+        "testStrategy": "Test text summary generation with various datasets. Verify WhatsApp sharing functionality on mobile and desktop. Test character limit handling for large datasets.",
+        "priority": "low",
+        "dependencies": [
+          10
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Ontwikkel tekstsamenvatting service",
+            "description": "Maak een backend-service die compacte, informatieve samenvattingen genereert van feedbackrondes, met opties voor thema's en kernpunten.",
+            "dependencies": [],
+            "details": "Implementeer logica om relevante feedback te analyseren en samen te vatten. Zorg voor uitbreidbaarheid en testbaarheid.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Implementeer API endpoint voor samenvatting",
+            "description": "Maak een REST API endpoint (GET /api/rounds/:id/summary/text) dat de tekstsamenvatting retourneert.",
+            "dependencies": [
+              1
+            ],
+            "details": "Zorg voor correcte authenticatie en autorisatie. Valideer input en output. Test met verschillende datasets.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Bouw frontend component voor WhatsApp delen",
+            "description": "Ontwikkel een React-component waarmee gebruikers samenvattingen via WhatsApp kunnen delen.",
+            "dependencies": [
+              2
+            ],
+            "details": "Integreer het ophalen van samenvattingstekst en toon een deelknop met WhatsApp-icoon. Zorg voor responsive design.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Integreer WhatsApp Web API",
+            "description": "Implementeer de koppeling met de WhatsApp Web API om berichten te versturen vanuit de frontend.",
+            "dependencies": [
+              3
+            ],
+            "details": "Gebruik een geschikte API-provider (zoals WhatsApp Business API of whapi.cloud). Implementeer template-ondersteuning en test op desktop en mobiel.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Implementeer karakterlimiet en samenvattingslogica",
+            "description": "Zorg dat samenvattingen voldoen aan WhatsApp's karakterlimiet en splits of verkort tekst indien nodig.",
+            "dependencies": [
+              1,
+              4
+            ],
+            "details": "Implementeer logica om lange samenvattingen automatisch te verkorten of op te splitsen. Test met grote datasets.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Ontwerp en implementeer UI/UX voor deelknop",
+            "description": "Maak een intuïtieve en aantrekkelijke deelknop met WhatsApp-icoon en duidelijke feedback voor de gebruiker.",
+            "dependencies": [
+              3,
+              4,
+              5
+            ],
+            "details": "Zorg voor visuele consistentie, toegankelijkheid en duidelijke statusmeldingen bij delen. Test gebruikerservaring.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Implement Mobile-First Responsive Design",
+        "description": "Ensure the entire application is responsive and optimized for mobile devices.",
+        "details": "1. Create responsive layout components\n2. Implement mobile navigation\n3. Optimize forms for touch input\n4. Test and adjust all views for various screen sizes\n5. Implement responsive tables\n6. Add touch-friendly controls\n7. Optimize font sizes and spacing\n8. Ensure all interactive elements have appropriate touch targets\n9. Implement responsive visualizations\n10. Test and fix any mobile-specific issues",
+        "testStrategy": "Test the application on various devices and screen sizes. Verify touch functionality on mobile devices. Test navigation and forms on small screens. Use browser dev tools to simulate different devices.",
+        "priority": "medium",
+        "dependencies": [
+          6,
+          7,
+          8,
+          10
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Responsive layout opzetten",
+            "description": "Ontwerp en implementeer een flexibele layout die zich aanpast aan verschillende schermgroottes, met focus op mobile-first benadering.",
+            "dependencies": [],
+            "details": "Gebruik een responsive grid of framework en zorg dat de belangrijkste content altijd zichtbaar en toegankelijk is op kleine schermen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Mobiele navigatie ontwikkelen",
+            "description": "Implementeer een intuïtieve mobiele navigatie, zoals een hamburger menu of bottom navigation, die eenvoudig te bedienen is op touchscreens.",
+            "dependencies": [
+              1
+            ],
+            "details": "Zorg voor duidelijke navigatiepaden en minimaliseer het aantal klikken om bij belangrijke functies te komen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Formulieren optimaliseren voor mobiel",
+            "description": "Pas alle formulieren aan voor optimale bruikbaarheid op mobiele apparaten, met grote invoervelden en duidelijke labels.",
+            "dependencies": [
+              1
+            ],
+            "details": "Voeg touch-vriendelijke knoppen toe en zorg voor voldoende spacing tussen velden om fouten te voorkomen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "View testing uitvoeren op verschillende apparaten",
+            "description": "Test alle views en componenten op diverse schermformaten en apparaten om consistentie en functionaliteit te waarborgen.",
+            "dependencies": [
+              1,
+              2,
+              3
+            ],
+            "details": "Gebruik browser dev tools en echte apparaten om rendering en interactie te controleren.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Responsive tabellen implementeren",
+            "description": "Ontwerp en bouw tabellen die goed werken op mobiele schermen, bijvoorbeeld door kolommen te verbergen of horizontaal scrollen toe te staan.",
+            "dependencies": [
+              1
+            ],
+            "details": "Zorg dat belangrijke data altijd zichtbaar blijft en dat interactie eenvoudig is op touchscreens.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Touch controls toevoegen",
+            "description": "Implementeer touch-vriendelijke bedieningselementen zoals swipe, tap en drag voor relevante UI-componenten.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Optimaliseer knoppen en interactieve elementen voor bediening met de vingers, inclusief haptische feedback waar mogelijk.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Typografie en spacing optimaliseren",
+            "description": "Pas lettergroottes, regelafstand en marges aan voor leesbaarheid en gebruiksgemak op mobiele apparaten.",
+            "dependencies": [
+              1
+            ],
+            "details": "Gebruik schaalbare typografie en voldoende witruimte om visuele rust en toegankelijkheid te bevorderen.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Visuele optimalisatie en touch targets",
+            "description": "Zorg dat alle interactieve en visuele elementen goed zichtbaar zijn en voldoen aan minimale touch target richtlijnen.",
+            "dependencies": [
+              1,
+              2,
+              3,
+              5,
+              6,
+              7
+            ],
+            "details": "Controleer kleurcontrasten, iconen en knoppen op zichtbaarheid en toegankelijkheid. Pas waar nodig de styling aan voor optimale mobiele ervaring.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Finalize Deployment Configuration",
+        "description": "Prepare the application for deployment to a cloud platform like Heroku or Vercel.",
+        "details": "1. Create production build configuration\n2. Optimize assets for production\n3. Set up environment variables for production\n4. Configure MongoDB connection for production\n5. Implement proper error logging\n6. Create deployment scripts\n7. Set up CI/CD pipeline\n8. Configure domain and SSL\n9. Implement rate limiting and security headers\n10. Create backup strategy\n11. Document deployment process",
+        "testStrategy": "Test the production build locally. Verify that all features work in the production environment. Test deployment to staging environment. Verify security configurations and performance.",
+        "priority": "medium",
+        "dependencies": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Productie Build Configuratie",
+            "description": "Stel de build-configuratie in voor productie, inclusief minificatie en bundling van code.",
+            "dependencies": [],
+            "details": "Zorg dat de build-tool (bijv. Webpack, Vite) correct is ingesteld voor een productieomgeving. Controleer dat alle niet-essentiële code wordt verwijderd.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Asset Optimalisatie",
+            "description": "Optimaliseer statische assets zoals afbeeldingen, CSS en JavaScript voor snelle laadtijden.",
+            "dependencies": [
+              1
+            ],
+            "details": "Voer compressie en caching uit op assets. Gebruik tools zoals imagemin, cssnano en terser.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Omgevingsvariabelen Configuratie",
+            "description": "Configureer en beheer productie-omgevingsvariabelen veilig.",
+            "dependencies": [
+              1
+            ],
+            "details": "Gebruik een .env.production bestand of een secrets manager. Controleer dat gevoelige gegevens niet in de codebase staan.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Database Connectie Instellen",
+            "description": "Configureer de productieverbinding met de MongoDB database.",
+            "dependencies": [
+              3
+            ],
+            "details": "Zorg voor veilige connectiestrings, gebruik environment variables en test de verbinding in een staging-omgeving.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Logging Implementeren",
+            "description": "Implementeer gestructureerde fout- en access-logging voor productie.",
+            "dependencies": [
+              1
+            ],
+            "details": "Gebruik een logging framework (zoals Winston of Bunyan) en zorg voor logrotatie en monitoring.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Deployment Scripts Aanmaken",
+            "description": "Schrijf en test scripts voor geautomatiseerde deployment naar de cloudomgeving.",
+            "dependencies": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "details": "Gebruik shell scripts, npm scripts of tools als Ansible. Automatiseer build, upload en herstart van de applicatie.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "CI/CD Pipeline Inrichten",
+            "description": "Stel een CI/CD pipeline in voor automatische builds, tests en deploys.",
+            "dependencies": [
+              6
+            ],
+            "details": "Gebruik platforms zoals GitHub Actions, GitLab CI of Jenkins. Automatiseer testen, build en deployment naar productie.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Domein en SSL Configuratie",
+            "description": "Koppel het domein en configureer een geldig SSL-certificaat.",
+            "dependencies": [
+              6
+            ],
+            "details": "Registreer het domein, stel DNS-records in en gebruik Let's Encrypt of een andere CA voor SSL.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 9,
+            "title": "Security Maatregelen Implementeren",
+            "description": "Voer beveiligingsmaatregelen door zoals rate limiting, security headers en toegangscontrole.",
+            "dependencies": [
+              6,
+              8
+            ],
+            "details": "Implementeer HTTP security headers, rate limiting, input validatie en beperk toegang tot gevoelige endpoints.",
+            "status": "pending",
+            "testStrategy": ""
+          },
+          {
+            "id": 10,
+            "title": "Backup Strategie en Documentatie",
+            "description": "Ontwikkel een backupstrategie en documenteer het volledige deploymentproces.",
+            "dependencies": [
+              4,
+              7,
+              9
+            ],
+            "details": "Stel automatische databasebackups in, test restore-procedures en documenteer alle deploymentstappen en configuraties.",
+            "status": "pending",
+            "testStrategy": ""
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "created": "2025-09-25T09:45:24.525Z",
+      "updated": "2025-09-25T10:13:23.577Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

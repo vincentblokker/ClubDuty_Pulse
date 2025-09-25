@@ -1,0 +1,69 @@
+# Task ID: 8
+# Title: Implement Raw Feedback View
+# Status: pending
+# Dependencies: 6, 7
+# Priority: medium
+# Description: Develop the view that displays all raw, anonymous feedback for each player to the coach.
+# Details:
+1. Create endpoint: GET /api/rounds/:id/feedback
+2. Build raw feedback component in dashboard
+3. Implement player selection dropdown
+4. Display all strengths and improvement areas for selected player
+5. Maintain anonymity by not showing who provided the feedback
+6. Add filtering options (strengths/improvements)
+7. Implement pagination if needed
+8. Create responsive layout for feedback display
+9. Add copy functionality for individual feedback items
+
+# Test Strategy:
+Test feedback retrieval and display for various players. Verify anonymity is maintained. Test filtering and pagination. Ensure the view works correctly with different amounts of feedback.
+
+# Subtasks:
+## 1. Backend API ontwikkeling [pending]
+### Dependencies: None
+### Description: Ontwikkel de backend API die ruwe, anonieme feedback per speler ophaalt en ondersteunt filtering, paginering en copy-functionaliteit.
+### Details:
+Implementeer een endpoint (GET /api/rounds/:id/feedback) dat alle relevante feedbackgegevens gestructureerd en veilig aanlevert. Zorg voor parameters voor filtering en paginering.
+
+## 2. Frontend component bouw [pending]
+### Dependencies: 8.1
+### Description: Bouw het dashboardcomponent dat ruwe feedback per speler toont aan de coach.
+### Details:
+Ontwerp en implementeer een React-component die feedbackgegevens ophaalt via de API en overzichtelijk weergeeft.
+
+## 3. Dropdown implementatie [pending]
+### Dependencies: 8.2
+### Description: Implementeer een dropdown waarmee de coach een speler kan selecteren om diens feedback te bekijken.
+### Details:
+Maak een dropdown die dynamisch gevuld wordt met spelersnamen en bij selectie de juiste feedback ophaalt en toont.
+
+## 4. Feedback weergave [pending]
+### Dependencies: 8.3
+### Description: Zorg voor een duidelijke presentatie van alle sterke punten en verbeterpunten per geselecteerde speler.
+### Details:
+Toon feedback in gescheiden secties (sterktes/verbeteringen) en zorg voor een overzichtelijke, toegankelijke layout.
+
+## 5. Anonimiteit waarborgen [pending]
+### Dependencies: 8.4
+### Description: Implementeer maatregelen zodat de feedback volledig anoniem blijft en niet herleidbaar is tot individuele gevers.
+### Details:
+Verwijder alle identificerende metadata uit de feedbackweergave en test op mogelijke lekken van herkomstinformatie.
+
+## 6. Filtering [pending]
+### Dependencies: 8.5
+### Description: Voeg filteropties toe waarmee coaches feedback kunnen sorteren op type (sterktes/verbeteringen) en eventueel op trefwoord.
+### Details:
+Implementeer frontend filters en backend query-ondersteuning voor het filteren van feedback.
+
+## 7. Paginering [pending]
+### Dependencies: 8.6
+### Description: Implementeer paginering zodat grote hoeveelheden feedback overzichtelijk en performant getoond worden.
+### Details:
+Voeg paginering toe aan zowel de API als de frontend component, met navigatie tussen pagina's.
+
+## 8. Responsive design en copy-functionaliteit [pending]
+### Dependencies: 8.7
+### Description: Zorg dat de feedbackweergave goed werkt op alle schermformaten en implementeer een kopieerknop per feedbackitem.
+### Details:
+Gebruik responsive CSS en voeg een copy-to-clipboard functie toe aan elk feedbackitem voor eenvoudig delen.
+

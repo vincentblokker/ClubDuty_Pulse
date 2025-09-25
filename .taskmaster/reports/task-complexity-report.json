@@ -1,0 +1,133 @@
+{
+	"meta": {
+		"generatedAt": "2025-09-25T09:47:20.022Z",
+		"tasksAnalyzed": 15,
+		"totalTasks": 15,
+		"analysisCount": 15,
+		"thresholdScore": 5,
+		"projectName": "Taskmaster",
+		"usedResearch": true
+	},
+	"complexityAnalysis": [
+		{
+			"taskId": 1,
+			"taskTitle": "Setup Project Repository and Environment",
+			"complexityScore": 4,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Splits deze taak op in afzonderlijke subtaken voor: repository aanmaken, frontend initialisatie, frontend styling setup (Tailwind, DaisyUI), backend initialisatie, backend dependencies, basis folderstructuur, en basis README/documentatie.",
+			"reasoning": "Deze taak omvat standaard projectopzet voor moderne webapplicaties, met bekende tools en weinig logische vertakkingen. De complexiteit is laag tot gemiddeld, maar vereist zorgvuldige stappen voor een robuuste basis. Subtaken zijn nodig om fouten te voorkomen en parallel werk mogelijk te maken."
+		},
+		{
+			"taskId": 8,
+			"taskTitle": "Implement Raw Feedback View",
+			"complexityScore": 6,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Breek deze taak op in backend API ontwikkeling, frontend component bouw, dropdown implementatie, feedback weergave, anonimiteit waarborgen, filtering, paginering, responsive design, en copy-functionaliteit.",
+			"reasoning": "Deze taak vereist zowel backend als frontend werk, met aandacht voor privacy (anonimiteit), filtering, en schaalbaarheid (paginering). De interactie tussen componenten en de noodzaak tot veilige, gebruiksvriendelijke presentatie verhogen de complexiteit."
+		},
+		{
+			"taskId": 2,
+			"taskTitle": "Setup MongoDB and Database Models",
+			"complexityScore": 7,
+			"recommendedSubtasks": 9,
+			"expansionPrompt": "Splits deze taak op in: MongoDB installatie, connectie module, modeldefinities per entiteit, relaties en referenties, validatie, indexering, initialisatie script, unit tests, en foutafhandeling.",
+			"reasoning": "Het modelleren van meerdere entiteiten met relaties, validatie en indexering vereist diepgaande kennis van Mongoose en databasemodellering. Unit tests en foutafhandeling zijn essentieel voor betrouwbaarheid, wat de complexiteit verhoogt."
+		},
+		{
+			"taskId": 12,
+			"taskTitle": "Implement PDF Export Functionality",
+			"complexityScore": 6,
+			"recommendedSubtasks": 7,
+			"expansionPrompt": "Breek deze taak op in: PDF library installatie, backend PDF service, template ontwerp, endpoint implementatie, visualisatie rendering, frontend download functionaliteit, en content-opties.",
+			"reasoning": "PDF generatie vereist kennis van externe libraries, template design, en correcte rendering van dynamische data. Cross-browser compatibiliteit en visuele kwaliteit zijn belangrijk, wat de taak matig complex maakt."
+		},
+		{
+			"taskId": 13,
+			"taskTitle": "Implement WhatsApp Sharing",
+			"complexityScore": 5,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Splits deze taak op in: tekstsamenvatting service, API endpoint, frontend component, WhatsApp Web API integratie, karakterlimiet/logica, en UI/UX (deelknop).",
+			"reasoning": "Hoewel WhatsApp delen technisch relatief eenvoudig is, vereist het genereren van compacte, informatieve samenvattingen en het omgaan met limieten extra aandacht. De afhankelijkheid van externe API's en UX zijn aandachtspunten."
+		},
+		{
+			"taskId": 10,
+			"taskTitle": "Develop Team Themes Dashboard",
+			"complexityScore": 6,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Breek deze taak op in: dashboard component, datavisualisatie (grafiek/tag cloud), themaranking, voorbeeldweergave, filtering, toggle functionaliteit, responsive layout, en drill-down functionaliteit.",
+			"reasoning": "Het combineren van datavisualisatie, filtering, en interactieve UI-elementen vereist een gestructureerde aanpak. De taak vraagt om zowel frontend als backend afstemming en goede UX, wat de complexiteit verhoogt."
+		},
+		{
+			"taskId": 4,
+			"taskTitle": "Implement Round Management",
+			"complexityScore": 7,
+			"recommendedSubtasks": 9,
+			"expansionPrompt": "Splits deze taak op in: backend controller, API endpoints, frontend formulieren, lijstweergave, detailweergave, validatie, status lifecycle, unieke URL generatie, en toegangsbescherming.",
+			"reasoning": "Round management omvat meerdere CRUD-operaties, statusbeheer, validatie en frontend-backend interactie. Het correct implementeren van de levenscyclus en toegangscontrole vereist zorgvuldige afstemming en testing."
+		},
+		{
+			"taskId": 15,
+			"taskTitle": "Finalize Deployment Configuration",
+			"complexityScore": 8,
+			"recommendedSubtasks": 10,
+			"expansionPrompt": "Breek deze taak op in: productie build, asset optimalisatie, env configuratie, database connectie, logging, deployment scripts, CI/CD pipeline, domein/SSL, security maatregelen, backup strategie, en documentatie.",
+			"reasoning": "Deployment omvat veel facetten: build-optimalisatie, security, CI/CD, cloudconfiguratie en documentatie. Fouten kunnen direct impact hebben op productie. Best practices vereisen gescheiden subtaken voor betrouwbaarheid en schaalbaarheid."
+		},
+		{
+			"taskId": 14,
+			"taskTitle": "Implement Mobile-First Responsive Design",
+			"complexityScore": 7,
+			"recommendedSubtasks": 8,
+			"expansionPrompt": "Splits deze taak op in: responsive layout, mobiele navigatie, form optimalisatie, view testing, responsive tabellen, touch controls, typografie/spacing, en visuele optimalisatie.",
+			"reasoning": "Responsiveness vereist aanpassingen op alle UI-niveaus, met aandacht voor UX op verschillende apparaten. Het testen en optimaliseren voor diverse schermformaten en interacties maakt deze taak bovengemiddeld complex."
+		},
+		{
+			"taskId": 11,
+			"taskTitle": "Implement CSV Export Functionality",
+			"complexityScore": 5,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Breek deze taak op in: backend export service, CSV generatie, API endpoint, frontend export opties, download functionaliteit, en CSV formatting/encoding.",
+			"reasoning": "CSV export is technisch overzichtelijk, maar vereist aandacht voor correcte dataformattering, encoding, en download UX. Het aantal logische vertakkingen is beperkt, maar robuustheid is belangrijk."
+		},
+		{
+			"taskId": 3,
+			"taskTitle": "Implement Authentication System",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down this task with a focus on implement authentication system.",
+			"reasoning": "Automatically added due to missing analysis in AI response."
+		},
+		{
+			"taskId": 5,
+			"taskTitle": "Implement Assignment Algorithm",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down this task with a focus on implement assignment algorithm.",
+			"reasoning": "Automatically added due to missing analysis in AI response."
+		},
+		{
+			"taskId": 6,
+			"taskTitle": "Build Feedback Form Interface",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down this task with a focus on build feedback form interface.",
+			"reasoning": "Automatically added due to missing analysis in AI response."
+		},
+		{
+			"taskId": 7,
+			"taskTitle": "Develop Coach Dashboard - Progress View",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down this task with a focus on develop coach dashboard - progress view.",
+			"reasoning": "Automatically added due to missing analysis in AI response."
+		},
+		{
+			"taskId": 9,
+			"taskTitle": "Implement Feedback Clustering Algorithm",
+			"complexityScore": 5,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Break down this task with a focus on implement feedback clustering algorithm.",
+			"reasoning": "Automatically added due to missing analysis in AI response."
+		}
+	]
+}

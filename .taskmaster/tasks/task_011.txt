@@ -1,0 +1,56 @@
+# Task ID: 11
+# Title: Implement CSV Export Functionality
+# Status: pending
+# Dependencies: 8, 10
+# Priority: low
+# Description: Develop the functionality to export feedback summaries to CSV format.
+# Details:
+1. Create export service in backend
+2. Implement CSV generation logic
+3. Create endpoint: GET /api/rounds/:id/export/csv
+4. Build export options in frontend (raw feedback, themes, or both)
+5. Implement download functionality
+6. Add filename generation with round name and date
+7. Create CSV structure with appropriate headers
+8. Handle special characters and CSV formatting
+
+# Test Strategy:
+Test CSV generation with various datasets. Verify file format and content. Test download functionality in different browsers. Verify that special characters are handled correctly.
+
+# Subtasks:
+## 1. Backend export service ontwikkelen [pending]
+### Dependencies: None
+### Description: Ontwikkel een backend service die feedback samenvattingen kan exporteren. Zorg voor een robuuste architectuur die schaalbaar is en eenvoudig te testen.
+### Details:
+Implementeer een service in de backend die de benodigde data ophaalt en voorbereidt voor export. Houd rekening met data-integriteit en beveiliging.
+
+## 2. CSV generatie logica implementeren [pending]
+### Dependencies: 11.1
+### Description: Implementeer de logica om data om te zetten naar een correct geformatteerd CSV-bestand, inclusief headers en speciale tekens.
+### Details:
+Gebruik best practices voor CSV-formattering, zoals consistente scheidingstekens, correcte headers en encoding (bijv. UTF-8). Test met verschillende datasets.
+
+## 3. API endpoint voor CSV export maken [pending]
+### Dependencies: 11.2
+### Description: Maak een API endpoint (GET /api/rounds/:id/export/csv) waarmee de frontend een CSV-export kan opvragen.
+### Details:
+Implementeer authenticatie en autorisatie op het endpoint. Zorg dat het endpoint het gegenereerde CSV-bestand retourneert als downloadbare response.
+
+## 4. Frontend export opties bouwen [pending]
+### Dependencies: 11.3
+### Description: Ontwerp en implementeer frontend UI waarmee gebruikers kunnen kiezen welke data ze willen exporteren (ruwe feedback, thema’s, of beide).
+### Details:
+Maak een export dialoog of menu met duidelijke opties. Zorg dat de gekozen export parameters worden doorgegeven aan het API endpoint.
+
+## 5. Download functionaliteit implementeren [pending]
+### Dependencies: 11.4
+### Description: Implementeer frontend functionaliteit waarmee gebruikers het CSV-bestand kunnen downloaden na export.
+### Details:
+Zorg voor een goede gebruikerservaring: downloadknop, voortgangsindicator, foutafhandeling. Test in verschillende browsers.
+
+## 6. CSV formatting en encoding optimaliseren [pending]
+### Dependencies: 11.2
+### Description: Optimaliseer de CSV-formattering en encoding zodat het bestand correct wordt weergegeven in alle gangbare spreadsheetprogramma’s.
+### Details:
+Controleer op correcte headers, scheidingstekens, encoding (UTF-8), en afhandeling van speciale tekens. Test met internationale karakters en grote datasets.
+

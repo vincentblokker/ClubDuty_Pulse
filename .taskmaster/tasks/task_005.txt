@@ -1,0 +1,41 @@
+# Task ID: 5
+# Title: Implement Assignment Algorithm
+# Status: pending
+# Dependencies: 4
+# Priority: high
+# Description: Develop the algorithm that randomly assigns 2-3 teammates to each player for feedback, ensuring balanced distribution.
+# Details:
+1. Create assignment service in backend
+2. Implement random assignment algorithm with the following rules:
+   - Each player is assigned to rate 2-3 teammates
+   - Assignments are distributed evenly
+   - No player rates themselves
+   - All players receive feedback from at least 2 teammates
+3. Add support for 'pin' option to ensure specific assignments
+4. Create endpoint: POST /api/rounds/:id/assignments (generate assignments)
+5. Implement assignment validation and error handling
+6. Add functionality to regenerate assignments if needed
+7. Create assignment distribution visualization for coaches
+
+# Test Strategy:
+Write unit tests with various team sizes to verify algorithm correctness. Test edge cases like small teams (3-4 players) and large teams (20+ players). Verify that all players receive and give feedback. Test the 'pin' functionality.
+
+# Subtasks:
+## 1. Ontwerp en implementeer het random assignment algoritme [pending]
+### Dependencies: None
+### Description: Ontwikkel een algoritme dat elke speler willekeurig 2-3 teamgenoten toewijst voor feedback, waarbij wordt voldaan aan de eisen: geen zelftoewijzing, elke speler ontvangt feedback van minimaal 2 teamgenoten, en de verdeling is zo evenwichtig mogelijk.
+### Details:
+Implementeer de logica in een backend service. Houd rekening met randgevallen zoals kleine teams (3-4 spelers) en grote teams (20+ spelers). Voeg ondersteuning toe voor het 'pinnen' van specifieke toewijzingen.
+
+## 2. Implementeer de API-endpoint voor het genereren van assignments [pending]
+### Dependencies: 5.1
+### Description: Maak een endpoint POST /api/rounds/:id/assignments dat het assignment algoritme aanroept en de gegenereerde toewijzingen opslaat.
+### Details:
+Zorg voor correcte validatie van input en foutafhandeling. Controleer dat de gegenereerde toewijzingen voldoen aan alle gestelde regels voordat ze worden opgeslagen.
+
+## 3. Schrijf unit tests en valideer de assignment logica [pending]
+### Dependencies: 5.2
+### Description: Ontwikkel unit tests voor verschillende teamgroottes en scenario's om te verifiëren dat het algoritme correct werkt en aan alle eisen voldoet.
+### Details:
+Test onder andere op: kleine teams, grote teams, correcte verdeling, geen zelftoewijzing, minimaal 2 feedbackgevers per speler, en de werking van de 'pin' functionaliteit.
+

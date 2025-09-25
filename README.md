@@ -30,7 +30,7 @@ Snelle, eerlijke input uit het team, zonder drama. Coach ziet patronen, team kri
 - Backend: **Express 4.21.2**
 - Database: **MongoDB 7.0.5** (Mongoose)
 - Optioneel (later): TanStack Table, ApexCharts/D3, Socket.io, i18next, PWA
-- Tooling: Yarn, ESLint + Prettier, Husky + lint-staged, Jest + Cypress
+- Tooling: NPM, ESLint + Prettier, Husky + lint-staged, Jest + Cypress
 
 > Stack en versies zijn afgestemd op ClubDuty voor naadloze koppeling. 
 
@@ -62,9 +62,9 @@ utils/                # nanoid, date-fns helpers
 
 ## ⚙️ Installatie (dev)
 ```bash
-# Monorepo (Yarn workspaces)
-yarn install
-yarn dev        # start web en api in parallel (concurrently)
+# Monorepo (npm workspaces)
+npm install
+npm run dev        # start web en api in parallel (concurrently)
 ```
 
 🔐 Env (voorbeeld)
@@ -81,13 +81,13 @@ RATE_LIMIT_MAX_REQUESTS=100
 
 🧪 Scripts
 ```bash
-yarn dev            # web + api
-yarn dev:web        # alleen frontend
-yarn dev:api        # alleen backend
-yarn build          # build web
-yarn test           # unit tests (Jest)
-yarn cy:open        # e2e (Cypress)
-yarn lint           # eslint + prettier
+npm run dev            # web + api
+npm run dev:web        # alleen frontend
+npm run dev:api        # alleen backend
+npm run build          # build web
+npm run test           # unit tests (Jest)
+npm run cy:open        # e2e (Cypress)
+npm run lint           # eslint + prettier
 ```
 
 🖥️ Frontend (pages)
@@ -165,7 +165,7 @@ module.exports = {
 
 Mini-package.json (kern)
 
-Gebruik Yarn en versies die matchen:
+Gebruik NPM en versies die matchen:
 ```json
 {
   "name": "@clubduty/pulse-web",

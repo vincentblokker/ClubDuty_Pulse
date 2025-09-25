@@ -1,0 +1,104 @@
+Of course, I have adapted the information from the previous PRD into the new template as you requested. Here is the result, structured according to the requested sections.
+
+---
+
+### # Overview
+**ClubDuty Pulse** is a micro-app that facilitates anonymous, clustered peer feedback for sports teams. It solves the problem of ad-hoc and emotionally charged feedback by providing coaches with structured and actionable insights into team dynamics. It is designed for youth and amateur coaches who are looking for a quick, objective way to foster player growth and collaboration.
+
+---
+
+### # Core Features
+* **Anonymous Peer Feedback:**
+    * **What it does:** Players anonymously provide feedback to 2-3 randomly assigned teammates. They rate two strengths and one area for improvement.
+    * **Why it's important:** This process removes the personal element from feedback, reducing the chance of misunderstandings or drama. It encourages players to provide constructive, anonymous contributions.
+    * **How it works:** The app uses an assignment algorithm to create feedback rounds and ensures that raters and ratees are evenly distributed.
+
+* **Coach Dashboard:**
+    * **What it does:** The coach gets an overview of the feedback. It shows the raw, anonymous feedback per player and a clustered team summary.
+    * **Why it's important:** This is the central hub for the coach to identify patterns and turn findings into action. It allows them to understand team dynamics without having to read through every individual piece of feedback.
+    * **How it works:** The backend collects the feedback and groups it based on team themes, which the coach can view on the dashboard. The dashboard UI also shows the round's progress.
+
+* **Clustered Team Themes:**
+    * **What it does:** The app processes all anonymous feedback and bundles the findings into general themes like 'communication' or 'effort'.
+    * **Why it's important:** This is the core functionality. Instead of discussing individual feedback, the coach can focus training on general team themes, benefiting the entire team.
+    * **How it works:** The app uses an algorithm (potentially AI in the future) to recognize and group recurring words and phrases into predefined themes.
+
+* **Export and Reporting:**
+    * **What it does:** Coaches can export feedback summaries to CSV, PDF, or share directly via WhatsApp.
+    * **Why it's important:** This simplifies communication. Coaches can easily share findings with their staff or discuss them with the team (emphasizing themes, not individual feedback).
+    * **How it works:** The backend generates export files based on the processed feedback.
+
+---
+
+### # User Experience
+* **User Persona: The Coach**
+    * **Profile:** A busy youth or amateur coach who needs a quick, efficient tool to improve team dynamics. They have little time and want something easy to use.
+    * **Goal:** To gain quick insight into team dynamics without drama, and to find concrete points to work on during practices.
+
+* **Key User Flows:**
+    1.  **Sign Up:** Coach enters a team code and token to get access.
+    2.  **Create Round:** Coach creates a new feedback round and sends the unique URL to the players.
+    3.  **Give Feedback:** The player clicks the link, is assigned 2-3 teammates, and fills out the short forms.
+    4.  **View Results:** The coach logs into the dashboard and views the progress and clustered feedback.
+    5.  **Export:** The coach downloads the summary in the desired format.
+
+* **UI/UX Considerations:**
+    * **Minimalist and intuitive:** The UI must be as simple as possible, with a clear 'call-to-action' on each page. Use of **DaisyUI** ensures a consistent and rapid implementation of components.
+    * **Mobile-first:** The app is primarily designed for mobile devices, as feedback is most likely to be provided via smartphones.
+    * **Guidance:** Short instructions and example texts in the forms to encourage qualitative feedback.
+
+---
+
+### # Technical Architecture
+* **System Components:**
+    * **Frontend:** React app with Vite, built with TypeScript and Tailwind CSS.
+    * **Backend:** Node.js server with Express.
+    * **Database:** MongoDB via Mongoose for data storage.
+* **Data Models:**
+    * `Team`, `Player`, `Round`, `Assignment`, `Feedback`, `SummaryTeam`, `SummaryPlayer`. (As defined in the previous PRD).
+* **APIs and Integrations:**
+    * **Internal API:** RESTful API for communication between the frontend and backend.
+    * **External Integrations:** None in MVP v1.
+* **Infrastructure:** The application can be hosted on a cloud platform like Heroku or Vercel. It is designed as a 'stateless' service.
+
+---
+
+### # Development Roadmap
+* **MVP Requirements (v1):**
+    * User authentication (login with team code and token).
+    * Creating and closing a feedback round.
+    * The random assignment of 2-3 teammates (with 'pin' option).
+    * The feedback form.
+    * A basic coach dashboard with progress and raw feedback.
+    * Basic exports to CSV/PDF.
+* **Future Enhancements (post-v1):**
+    * Club-wide dashboards.
+    * Notifications (push, email).
+    * More extensive AI functionality for automatic theme generation.
+    * Integration with the ClubDuty platform.
+    * Support for multiple languages (i18n).
+
+---
+
+### # Logical Dependency Chain
+1.  **Foundation (Core Backend):** Set up the Express server, MongoDB connection, and data models. This allows data to be stored and retrieved.
+2.  **Authentication and Round Logic:** Build the login mechanism and the functionality to create, open, and close rounds. This is the basis for every session.
+3.  **Feedback Flow:** Implement the assignment algorithm and the frontend forms. This is the core of the application that generates the feedback.
+4.  **Coach Dashboard:** Build the dashboard to visualize the raw feedback. This ensures the coach can see immediate value.
+5.  **Data Processing and Exports:** Develop the logic for clustering feedback and building the export functions. This makes the data directly usable.
+
+---
+
+### # Risks and Mitigations
+* **Technical Challenges:** The random assignment must be balanced.
+    * **Mitigation:** Extensive unit and integration tests for the algorithm.
+* **MVP Scope:** We must resist the temptation to include too much functionality in v1.
+    * **Mitigation:** The **Development Roadmap** and **Logical Dependency Chain** serve as our guide. Anything that doesn't directly benefit the MVP is moved to later phases.
+* **Resource Constraints:** Insufficient time for development.
+    * **Mitigation:** A focus on the most impactful MVP features and the avoidance of extra functionality like complex notifications or club-wide overviews.
+
+---
+
+### # Appendix
+* **Research Findings:** Internal discussions with coaches from soccer and hockey clubs confirm the need for a simple, anonymous feedback tool.
+* **Technical Specifications:** The ClubDuty PRD is the source for the versions and libraries used to ensure seamless integration in the future.

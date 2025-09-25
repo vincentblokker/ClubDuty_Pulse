@@ -1,0 +1,40 @@
+# Task ID: 9
+# Title: Implement Feedback Clustering Algorithm
+# Status: pending
+# Dependencies: 8
+# Priority: medium
+# Description: Develop the algorithm that processes feedback and clusters it into general team themes like 'communication' or 'effort'.
+# Details:
+1. Create clustering service in backend
+2. Define predefined themes (communication, effort, teamwork, etc.)
+3. Implement keyword matching algorithm
+4. Add basic NLP functionality to recognize similar phrases
+5. Create theme counting and ranking logic
+6. Implement endpoint: GET /api/rounds/:id/themes
+7. Build theme extraction process that runs when a round is closed
+8. Create database update logic for storing themes
+9. Add example extraction for each theme
+10. Implement fallback for unrecognized feedback
+
+# Test Strategy:
+Test clustering with various feedback datasets. Verify that similar feedback is grouped correctly. Test edge cases with unusual feedback. Measure clustering accuracy with predefined test cases.
+
+# Subtasks:
+## 1. Ontwikkel clusteringservice en definieer thema's [pending]
+### Dependencies: None
+### Description: Bouw de backend clusteringservice en stel vooraf gedefinieerde thema's op zoals 'communicatie', 'inzet' en 'teamwerk'.
+### Details:
+Implementeer een backendmodule die feedbackdata ontvangt. Definieer een lijst van thema's en bijbehorende kernwoorden. Zorg dat de service schaalbaar is en eenvoudig thema's kan toevoegen of wijzigen.
+
+## 2. Implementeer algoritme voor thema-extractie en clustering [pending]
+### Dependencies: 9.1
+### Description: Voeg een keyword-matching algoritme en basis NLP-functionaliteit toe om feedback automatisch te groeperen onder relevante thema's.
+### Details:
+Gebruik keyword matching en eenvoudige NLP-technieken (zoals tokenisatie en synoniemenherkenning) om feedback te koppelen aan thema's. Ontwikkel logica voor het tellen en rangschikken van thema's en zorg dat het proces automatisch wordt uitgevoerd bij het sluiten van een ronde.
+
+## 3. Implementeer API-endpoint en database-updates voor thema's [pending]
+### Dependencies: 9.2
+### Description: Maak een endpoint voor het ophalen van thema's per ronde en implementeer database-updates voor het opslaan van themaresultaten.
+### Details:
+Ontwikkel het endpoint GET /api/rounds/:id/themes. Zorg dat thema's en voorbeeldfeedback per thema worden opgeslagen in de database. Implementeer fallback-logica voor onherkenbare feedback en test het geheel met verschillende datasets.
+

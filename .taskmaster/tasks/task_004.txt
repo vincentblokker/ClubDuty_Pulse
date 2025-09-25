@@ -1,0 +1,79 @@
+# Task ID: 4
+# Title: Implement Round Management
+# Status: pending
+# Dependencies: 2, 3
+# Priority: high
+# Description: Develop functionality for coaches to create, open, close, and manage feedback rounds.
+# Details:
+1. Create Round controller with CRUD operations
+2. Implement endpoints:
+   - POST /api/rounds (create new round)
+   - GET /api/rounds (list rounds for a team)
+   - GET /api/rounds/:id (get round details)
+   - PUT /api/rounds/:id (update round)
+   - PUT /api/rounds/:id/status (open/close round)
+3. Build round creation form in frontend
+4. Implement round list view for coaches
+5. Create round detail view with status controls
+6. Add validation for round dates and status changes
+7. Implement round status lifecycle (draft, open, closed)
+8. Create unique URL generation for sharing with players
+
+# Test Strategy:
+Test round creation, opening, and closing. Verify status transitions and validation rules. Test URL generation and access control. Ensure rounds are properly associated with teams.
+
+# Subtasks:
+## 1. Backend controller ontwikkelen [pending]
+### Dependencies: None
+### Description: Implementeer een backend controller voor het beheer van feedbackrondes met CRUD-functionaliteit.
+### Details:
+Maak een RoundController aan in de backend die verantwoordelijk is voor het aanmaken, ophalen, bijwerken en verwijderen van rondes.
+
+## 2. API endpoints implementeren [pending]
+### Dependencies: 4.1
+### Description: Ontwerp en implementeer de benodigde API endpoints voor het beheren van rondes.
+### Details:
+Implementeer endpoints zoals POST /api/rounds, GET /api/rounds, GET /api/rounds/:id, PUT /api/rounds/:id, en PUT /api/rounds/:id/status.
+
+## 3. Frontend formulier voor rondecreatie [pending]
+### Dependencies: 4.2
+### Description: Bouw een frontend formulier waarmee coaches nieuwe rondes kunnen aanmaken.
+### Details:
+Ontwerp en implementeer een formulier in de frontend voor het invoeren van rondegegevens zoals naam, start- en einddatum.
+
+## 4. Lijstweergave van rondes [pending]
+### Dependencies: 4.2
+### Description: Implementeer een frontend lijstweergave waarin alle rondes voor een team worden getoond.
+### Details:
+Maak een overzichtspagina waar coaches alle bestaande rondes kunnen zien, met basisinformatie en status.
+
+## 5. Detailweergave van een ronde [pending]
+### Dependencies: 4.4
+### Description: Implementeer een frontend detailpagina voor een specifieke ronde met statusbeheer.
+### Details:
+Toon uitgebreide informatie over de geselecteerde ronde en bied knoppen voor openen/sluiten van de ronde.
+
+## 6. Validatie van rondegegevens [pending]
+### Dependencies: 4.3, 4.5
+### Description: Voeg validatie toe voor rondevelden en statusovergangen in backend en frontend.
+### Details:
+Controleer op correcte datums, verplichte velden en geldige statusovergangen bij aanmaken en bewerken.
+
+## 7. Status lifecycle implementeren [pending]
+### Dependencies: 4.2, 4.6
+### Description: Implementeer de volledige statuslevenscyclus van een ronde (bijv. aangemaakt, open, gesloten).
+### Details:
+Zorg dat de status van een ronde correct wordt beheerd en alleen toegestane overgangen mogelijk zijn.
+
+## 8. Unieke URL generatie voor rondes [pending]
+### Dependencies: 4.2
+### Description: Implementeer logica voor het genereren van unieke, deelbare URLs voor elke ronde.
+### Details:
+Zorg dat elke ronde een unieke URL krijgt die gebruikt kan worden voor directe toegang tot de detailpagina.
+
+## 9. Toegangsbescherming en autorisatie [pending]
+### Dependencies: 4.2
+### Description: Implementeer toegangscontrole zodat alleen bevoegde coaches rondes kunnen beheren.
+### Details:
+Gebruik authenticatie- en autorisatiemechanismen om endpoints en frontend functionaliteit te beschermen.
+

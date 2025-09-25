@@ -1,0 +1,56 @@
+# Task ID: 13
+# Title: Implement WhatsApp Sharing
+# Status: pending
+# Dependencies: 10
+# Priority: low
+# Description: Develop functionality to share feedback summaries directly via WhatsApp.
+# Details:
+1. Create text summary generation service
+2. Implement endpoint: GET /api/rounds/:id/summary/text
+3. Build WhatsApp sharing component in frontend
+4. Use WhatsApp Web API for sharing
+5. Create concise text format for themes and key feedback
+6. Add options for content inclusion
+7. Implement character limit handling
+8. Create share button with WhatsApp icon
+
+# Test Strategy:
+Test text summary generation with various datasets. Verify WhatsApp sharing functionality on mobile and desktop. Test character limit handling for large datasets.
+
+# Subtasks:
+## 1. Ontwikkel tekstsamenvatting service [pending]
+### Dependencies: None
+### Description: Maak een backend-service die compacte, informatieve samenvattingen genereert van feedbackrondes, met opties voor thema's en kernpunten.
+### Details:
+Implementeer logica om relevante feedback te analyseren en samen te vatten. Zorg voor uitbreidbaarheid en testbaarheid.
+
+## 2. Implementeer API endpoint voor samenvatting [pending]
+### Dependencies: 13.1
+### Description: Maak een REST API endpoint (GET /api/rounds/:id/summary/text) dat de tekstsamenvatting retourneert.
+### Details:
+Zorg voor correcte authenticatie en autorisatie. Valideer input en output. Test met verschillende datasets.
+
+## 3. Bouw frontend component voor WhatsApp delen [pending]
+### Dependencies: 13.2
+### Description: Ontwikkel een React-component waarmee gebruikers samenvattingen via WhatsApp kunnen delen.
+### Details:
+Integreer het ophalen van samenvattingstekst en toon een deelknop met WhatsApp-icoon. Zorg voor responsive design.
+
+## 4. Integreer WhatsApp Web API [pending]
+### Dependencies: 13.3
+### Description: Implementeer de koppeling met de WhatsApp Web API om berichten te versturen vanuit de frontend.
+### Details:
+Gebruik een geschikte API-provider (zoals WhatsApp Business API of whapi.cloud). Implementeer template-ondersteuning en test op desktop en mobiel.
+
+## 5. Implementeer karakterlimiet en samenvattingslogica [pending]
+### Dependencies: 13.1, 13.4
+### Description: Zorg dat samenvattingen voldoen aan WhatsApp's karakterlimiet en splits of verkort tekst indien nodig.
+### Details:
+Implementeer logica om lange samenvattingen automatisch te verkorten of op te splitsen. Test met grote datasets.
+
+## 6. Ontwerp en implementeer UI/UX voor deelknop [pending]
+### Dependencies: 13.3, 13.4, 13.5
+### Description: Maak een intuïtieve en aantrekkelijke deelknop met WhatsApp-icoon en duidelijke feedback voor de gebruiker.
+### Details:
+Zorg voor visuele consistentie, toegankelijkheid en duidelijke statusmeldingen bij delen. Test gebruikerservaring.
+

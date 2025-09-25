@@ -1,0 +1,80 @@
+# Task ID: 2
+# Title: Setup MongoDB and Database Models
+# Status: pending
+# Dependencies: 1
+# Priority: high
+# Description: Set up MongoDB connection and define the data models for Team, Player, Round, Assignment, Feedback, SummaryTeam, and SummaryPlayer using Mongoose.
+# Details:
+1. Install Mongoose: `npm install mongoose`
+2. Create database connection module in backend
+3. Define Mongoose schemas for each model:
+   - Team: { name, code, token, players, rounds }
+   - Player: { name, email, team }
+   - Round: { name, team, status, startDate, endDate, assignments }
+   - Assignment: { round, rater, ratees }
+   - Feedback: { assignment, ratee, strengths: [string], improvement: string }
+   - SummaryTeam: { round, themes: [{ name, count, examples }] }
+   - SummaryPlayer: { player, round, strengths: [string], improvements: [string] }
+4. Implement model relationships and references
+5. Create database initialization script
+6. Add validation rules to schemas
+7. Implement indexes for performance optimization
+
+# Test Strategy:
+Write unit tests for each model to verify schema validation, relationships, and CRUD operations. Test database connection with both success and failure scenarios.
+
+# Subtasks:
+## 1. MongoDB installatie [pending]
+### Dependencies: None
+### Description: Installeer MongoDB op de ontwikkelomgeving en zorg dat de database draait.
+### Details:
+Download en installeer de juiste versie van MongoDB voor het besturingssysteem. Start de MongoDB service en controleer of deze bereikbaar is.
+
+## 2. Connectie module [pending]
+### Dependencies: 2.1
+### Description: Implementeer een module voor het opzetten van de verbinding tussen de applicatie en MongoDB via Mongoose.
+### Details:
+Maak een apart bestand (bijv. db.js) waarin de Mongoose connectie wordt opgezet met foutafhandeling en logging.
+
+## 3. Modeldefinities per entiteit [pending]
+### Dependencies: 2.2
+### Description: Definieer Mongoose modellen voor alle entiteiten: Team, Player, Round, Assignment, Feedback, SummaryTeam, SummaryPlayer.
+### Details:
+Maak voor elke entiteit een apart schema-bestand met de juiste velden en types volgens de projectbeschrijving.
+
+## 4. Relaties en referenties [pending]
+### Dependencies: 2.3
+### Description: Implementeer de relaties tussen de modellen met behulp van referenties (ObjectId's) in de schemas.
+### Details:
+Gebruik Mongoose ref-velden om relaties tussen documenten te leggen, zoals spelers in een team of feedback gekoppeld aan assignments.
+
+## 5. Validatie [pending]
+### Dependencies: 2.3
+### Description: Voeg validatieregels toe aan de schemas om dataconsistentie te waarborgen.
+### Details:
+Gebruik Mongoose validatie-opties zoals required, enum, min/max, en custom validators waar nodig.
+
+## 6. Indexering [pending]
+### Dependencies: 2.3
+### Description: Definieer indexen op relevante velden om zoekopdrachten te optimaliseren.
+### Details:
+Voeg indexen toe in de schemas, bijvoorbeeld op unieke codes, e-mails of combinaties van velden die vaak worden gezocht.
+
+## 7. Initialisatie script [pending]
+### Dependencies: 2.3
+### Description: Schrijf een script om de database te initialiseren met testdata en basisstructuren.
+### Details:
+Maak een seed-script dat enkele teams, spelers, rondes en andere entiteiten toevoegt voor ontwikkel- en testdoeleinden.
+
+## 8. Unit tests [pending]
+### Dependencies: 2.3, 2.4, 2.5
+### Description: Implementeer unit tests voor alle modellen, inclusief validatie, relaties en CRUD-operaties.
+### Details:
+Gebruik een testframework zoals Jest of Mocha om de werking van de modellen en de databaseconnectie te verifiëren.
+
+## 9. Foutafhandeling [pending]
+### Dependencies: 2.2, 2.3, 2.4, 2.5, 2.8
+### Description: Implementeer centrale foutafhandeling voor database-operaties en modelvalidatie.
+### Details:
+Zorg voor duidelijke foutmeldingen en logging bij connectieproblemen, validatiefouten en CRUD-operaties.
+

@@ -1,0 +1,67 @@
+# Task ID: 1
+# Title: Setup Project Repository and Environment
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Initialize the project repository with React, Vite, TypeScript, Tailwind CSS, and DaisyUI for frontend and Node.js with Express for backend.
+# Details:
+1. Create a new repository for ClubDuty Pulse
+2. Initialize frontend with: `npm create vite@latest frontend -- --template react-ts`
+3. Add Tailwind CSS: `npm install -D tailwindcss postcss autoprefixer`
+4. Configure Tailwind: `npx tailwindcss init -p`
+5. Install DaisyUI: `npm install daisyui`
+6. Add DaisyUI to tailwind.config.js plugins
+7. Initialize backend with: `npm init -y`
+8. Install Express: `npm install express cors dotenv`
+9. Install TypeScript: `npm install -D typescript @types/express @types/node @types/cors`
+10. Create tsconfig.json for backend
+11. Setup basic folder structure for both frontend and backend
+12. Configure environment variables with .env files
+13. Create basic README.md with project setup instructions
+
+# Test Strategy:
+Verify that all dependencies install correctly and the development servers start without errors. Test the connection between frontend and backend with a simple health check endpoint.
+
+# Subtasks:
+## 1. Repository aanmaken [pending]
+### Dependencies: None
+### Description: Maak een nieuwe Git-repository aan voor het project ClubDuty Pulse.
+### Details:
+Initialiseer een lege repository op GitHub, GitLab of een ander platform. Voeg een .gitignore toe voor Node.js en relevante tools.
+
+## 2. Frontend initialisatie [pending]
+### Dependencies: 1.1
+### Description: Initialiseer het frontend-project met React, Vite en TypeScript.
+### Details:
+Gebruik het commando `npm create vite@latest frontend -- --template react-ts` om de frontend-map aan te maken en installeer de initiële dependencies.
+
+## 3. Frontend styling setup (Tailwind, DaisyUI) [pending]
+### Dependencies: 1.2
+### Description: Voeg Tailwind CSS en DaisyUI toe aan het frontend-project en configureer deze.
+### Details:
+Installeer Tailwind CSS, PostCSS en Autoprefixer. Voer `npx tailwindcss init -p` uit. Installeer DaisyUI en voeg deze toe aan de plugins in tailwind.config.js.
+
+## 4. Backend initialisatie [pending]
+### Dependencies: 1.1
+### Description: Initialiseer het backend-project met Node.js en Express.
+### Details:
+Maak een backend-map aan, voer `npm init -y` uit en installeer Express, CORS en dotenv.
+
+## 5. Backend dependencies installeren [pending]
+### Dependencies: 1.4
+### Description: Voeg TypeScript en benodigde type-definities toe aan het backend-project.
+### Details:
+Installeer TypeScript, @types/express, @types/node en configureer tsconfig.json voor het backend-project.
+
+## 6. Basis folderstructuur opzetten [pending]
+### Dependencies: 1.2, 1.4
+### Description: Maak de basis mappenstructuur aan voor frontend en backend.
+### Details:
+Zorg voor een duidelijke scheiding tussen frontend en backend. Maak mappen aan zoals src, public, routes, controllers, models (backend) en src, components, assets (frontend).
+
+## 7. Basis README en documentatie schrijven [pending]
+### Dependencies: 1.1, 1.2, 1.4, 1.6
+### Description: Schrijf een eerste README.md met installatie-instructies en projectoverzicht.
+### Details:
+Beschrijf in de README het doel van het project, de gebruikte technologieën, installatie- en opstartinstructies voor frontend en backend.
+
