@@ -21,8 +21,6 @@ const TeamSchema = new Schema<TeamDoc>(
   { timestamps: true }
 )
 
-TeamSchema.index({ code: 1 }, { unique: true })
-
 export const Team: Model<TeamDoc> = model<TeamDoc>('Team', TeamSchema)
 
 
