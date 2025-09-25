@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import { initDb } from './db'
 
 dotenv.config()
 const app = express()
@@ -13,6 +14,13 @@ app.get('/healthz', (_req, res) => {
   res.json({ status: 'ok' })
 })
 
-app.listen(PORT, () => {
-  console.log()
-})
+initDb()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`[pulse-api] listening on http://localhost:${PORT}`)
+    })
+  })
+  .catch((e) => {
+    console.error('[db] failed to connect', e)
+    process.exit(1)
+  })
