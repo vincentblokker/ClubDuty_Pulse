@@ -5,19 +5,27 @@ Coaches krijgen directe **teamthema’s** en **per-speler bullets** (zonder name
 
 ## How to Run
 
-To run the `main.py` script, execute the following command in your terminal:
-
+Frontend (Vite + React + TS):
 ```bash
-python main.py
+cd apps/pulse-web
+npm install
+npm run dev
+```
+
+Backend (Express + TS):
+```bash
+cd apps/pulse-api
+npm install
+npm run dev
 ```
 
 ## How to Test
 
-To run the tests for this project, execute the following command in your terminal:
-
+Snelheidstest API (health check):
 ```bash
-pytest test_main.py
+curl http://localhost:5011/healthz
 ```
+Frontend smoke-test: open de URL die Vite toont (standaard `http://localhost:5173`).
 
 ## ✨ Waarom
 Snelle, eerlijke input uit het team, zonder drama. Coach ziet patronen, team krijgt duidelijke thema’s.
@@ -62,9 +70,15 @@ utils/                # nanoid, date-fns helpers
 
 ## ⚙️ Installatie (dev)
 ```bash
-# Monorepo (npm workspaces)
+# Frontend
+cd apps/pulse-web
 npm install
-npm run dev        # start web en api in parallel (concurrently)
+npm run dev
+
+# Backend
+cd apps/pulse-api
+npm install
+npm run dev
 ```
 
 🔐 Env (voorbeeld)
@@ -81,13 +95,16 @@ RATE_LIMIT_MAX_REQUESTS=100
 
 🧪 Scripts
 ```bash
-npm run dev            # web + api
-npm run dev:web        # alleen frontend
-npm run dev:api        # alleen backend
-npm run build          # build web
-npm run test           # unit tests (Jest)
-npm run cy:open        # e2e (Cypress)
-npm run lint           # eslint + prettier
+# In apps/pulse-web
+npm run dev            # start Vite dev server
+npm run build          # productie build
+npm run preview        # serve build
+npm run lint           # eslint
+
+# In apps/pulse-api
+npm run dev            # ts-node-dev server
+npm run build          # tsc build -> dist/
+npm run start          # run compiled server
 ```
 
 🖥️ Frontend (pages)
@@ -137,31 +154,12 @@ GET  /rounds/:id/export.csv|pdf  -> download
 ---
 
 ## Bonus: DaisyUI thema (matching ClubDuty)
-Zet dit in `pulse-web/tailwind.config.js` of in DaisyUI theme config:
-```js
-module.exports = {
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: [
-      {
-        clubduty: {
-          "primary": "#25B964",
-          "secondary": "#1F9D55",
-          "accent": "#66CC88",
-          "neutral": "#1f2937",
-          "base-100": "#ffffff",
-          "info": "#3abff8",
-          "success": "#36d399",
-          "warning": "#fbbd23",
-          "error": "#f87272",
-        },
-      },
-    ],
-    logs: false,
-  },
-}
+Tailwind v4 gebruikt CSS-directives. Voeg in `apps/pulse-web/src/index.css` toe:
+```css
+@import "tailwindcss";
+@plugin "daisyui";
 ```
+Gebruik vervolgens `data-theme="clubduty"` op `<html>` of via DaisyUI configuratie naar wens.
 
 Mini-package.json (kern)
 
