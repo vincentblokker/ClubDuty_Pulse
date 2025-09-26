@@ -53,13 +53,16 @@ roundsRouter.post('/:id/assign', requireAuth, async (req, res) => {
 
     // Helper to pick distinct ratees for a rater
     const pickRatees = (raterId: any) => {
-      const candidateIds = players.map((p) => String(p._id)).filter((id) => id !== String(raterId))
-      // Simple shuffle
-      for (let i = candidateIds.length - 1; i > 0; i--) {
+      const base = players.map((p) => String(p._id)).filter((id) => id !== String(raterId))
+      const arr: string[] = base.slice()
+      // Fisher-Yates shuffle met expliciete non-null assertions ivm noUncheckedIndexedAccess
+      for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1))
-        ;[candidateIds[i], candidateIds[j]] = [candidateIds[j], candidateIds[i]]
+        const t = arr[i]!
+        arr[i] = arr[j]!
+        arr[j] = t
       }
-      return candidateIds.slice(0, Math.min(numPerRater, candidateIds.length))
+      return arr.slice(0, Math.min(numPerRater, arr.length))
     }
 
     const docs = [] as Array<{ round: Types.ObjectId; rater: Types.ObjectId; ratees: Types.ObjectId[] }>
