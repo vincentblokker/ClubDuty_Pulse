@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import mongoose from 'mongoose'
+import mongoose, { Types } from 'mongoose'
 import { Team } from './models/Team'
 import { Player } from './models/Player'
 
@@ -28,7 +28,7 @@ async function main(): Promise<void> {
   ]
 
   const created = await Player.insertMany(players)
-  team.players = created.map((p) => p._id)
+  team.players = created.map((p) => new Types.ObjectId(p._id))
   await team.save()
 
   console.log('Seed complete:')

@@ -4,7 +4,7 @@ import { Round } from '../models/Round'
 import { Player } from '../models/Player'
 import { Assignment } from '../models/Assignment'
 import { Feedback } from '../models/Feedback'
-import type { Types } from 'mongoose'
+import { Types } from 'mongoose'
 
 export const roundsRouter = Router()
 
@@ -47,7 +47,7 @@ roundsRouter.post('/:id/assign', requireAuth, async (req, res) => {
     await Assignment.deleteMany({ round: round._id })
 
     // Helper to pick distinct ratees for a rater
-    const pickRatees = (raterId: Types.ObjectId) => {
+    const pickRatees = (raterId: any) => {
       const candidateIds = players.map((p) => String(p._id)).filter((id) => id !== String(raterId))
       // Simple shuffle
       for (let i = candidateIds.length - 1; i > 0; i--) {
@@ -58,9 +58,10 @@ roundsRouter.post('/:id/assign', requireAuth, async (req, res) => {
     }
 
     const docs = [] as Array<{ round: Types.ObjectId; rater: Types.ObjectId; ratees: Types.ObjectId[] }>
+    const roundObjId = new Types.ObjectId(String(round._id))
     for (const p of players) {
-      const ratees = pickRatees(p._id).map((id) => new (require('mongoose').Types.ObjectId)(id))
-      docs.push({ round: new (require('mongoose').Types.ObjectId)(String(round._id)), rater: p._id, ratees })
+      const ratees = pickRatees(p._id).map((id) => new Types.ObjectId(id))
+      docs.push({ round: roundObjId, rater: new Types.ObjectId(String(p._id)), ratees })
     }
     const created = await Assignment.insertMany(docs)
 
@@ -87,7 +88,7 @@ roundsRouter.get('/:id/my-assign', requireAuth, async (req, res) => {
       res.status(404).json({ error: 'No assignment for player' })
       return
     }
-    res.json({ ratees: (assign.ratees as any[]).map((r) => ({ id: String(r._id), name: r.name })) })
+    res.json({ ratees: (assign.ratees as any[]).map((r) => ({ id: String(r._id), name: (r as any).name })) })
   } catch {
     res.status(500).json({ error: 'Failed to get assignment' })
   }
