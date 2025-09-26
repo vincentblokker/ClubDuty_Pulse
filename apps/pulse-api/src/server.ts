@@ -5,6 +5,7 @@ import { initDb } from './db'
 import { authRouter } from './routes/auth'
 import { roundsRouter } from './routes/rounds'
 import { feedbackRouter } from './routes/feedback'
+import { debugRouter } from './routes/debug'
 
 dotenv.config()
 const app = express()
@@ -20,6 +21,7 @@ app.get('/healthz', (_req, res) => {
 app.use('/auth', authRouter)
 app.use('/rounds', roundsRouter)
 app.use('/feedback', feedbackRouter)
+app.use('/debug', debugRouter)
 
 initDb()
   .then(() => {
