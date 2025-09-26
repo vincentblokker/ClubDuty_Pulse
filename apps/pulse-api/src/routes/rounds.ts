@@ -15,8 +15,13 @@ roundsRouter.post('/', requireAuth, async (req, res) => {
       res.status(400).json({ error: 'name is required' })
       return
     }
-    const teamId = req.auth!.teamId
-    const round = await Round.create({ name, team: teamId, status: 'OPEN' })
+    const teamId = req.auth?.teamId
+    if (!teamId) {
+      res.status(401).json({ error: 'No team in auth context' })
+      return
+    }
+    const teamObjId = new Types.ObjectId(String(teamId))
+    const round = await Round.create({ name, team: teamObjId as any, status: 'OPEN' })
     res.status(201).json({ id: round._id })
   } catch {
     res.status(500).json({ error: 'Failed to create round' })

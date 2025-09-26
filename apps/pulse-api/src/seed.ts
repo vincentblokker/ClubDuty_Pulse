@@ -28,7 +28,7 @@ async function main(): Promise<void> {
   ]
 
   const created = await Player.insertMany(players)
-  team.players = created.map((p) => new Types.ObjectId(p._id))
+  team.players = created.map((p) => new Types.ObjectId(String(p._id)))
   await team.save()
 
   console.log('Seed complete:')
