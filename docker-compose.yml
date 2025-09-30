@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: clubduty_pulse-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: clubduty-pulse
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - clubduty_pulse
+
+  api:
+    build: ./apps/pulse-api
+    container_name: clubduty_pulse-api
+    restart: unless-stopped
+    ports:
+      - "5011:5011"
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/clubduty-pulse
+      PORT: 5011
+      JWT_SECRET: your-secret-key-here
+      NODE_ENV: development
+    depends_on:
+      - mongo
+    volumes:
+      - ./apps/pulse-api:/app
+      - /app/node_modules
+    networks:
+      - clubduty_pulse
+
+  web:
+    build: ./apps/pulse-web
+    container_name: clubduty_pulse-web
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    environment:
+      VITE_API_URL: http://localhost:5011
+    depends_on:
+      - api
+    networks:
+      - clubduty_pulse
+
+volumes:
+  mongo_data:
+
+networks:
+  clubduty_pulse:
+    driver: bridge
