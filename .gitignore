@@ -23,3 +23,11 @@ node_modules/
 
 # OS specific
 .DS_Store
+
+# Build outputs
+apps/pulse-api/dist/
+apps/pulse-web/dist/
+
+# Test files
+*.test.html
+test-*.html
