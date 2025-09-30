@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import jwt from 'jsonwebtoken'
+import jwt = require('jsonwebtoken')
 import { Team } from '../models/Team'
 
 export const authRouter = Router()

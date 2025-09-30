@@ -116,19 +116,19 @@ export const RoundDetail: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'OPEN': return 'bg-green-100 text-green-800 border-green-200'
-      case 'CLOSED': return 'bg-red-100 text-red-800 border-red-200'
-      case 'DRAFT': return 'bg-gray-100 text-gray-800 border-gray-200'
-      default: return 'bg-gray-100 text-gray-800 border-gray-200'
+      case 'OPEN': return { backgroundColor: 'color-mix(in oklab, var(--color-success) 20%, transparent)', color: 'var(--color-success)', borderColor: 'color-mix(in oklab, var(--color-success) 50%, transparent)' }
+      case 'CLOSED': return { backgroundColor: 'color-mix(in oklab, var(--color-error) 20%, transparent)', color: 'var(--color-error)', borderColor: 'color-mix(in oklab, var(--color-error) 50%, transparent)' }
+      case 'DRAFT': return { backgroundColor: 'color-mix(in oklab, var(--color-base-content) 15%, transparent)', color: 'var(--color-base-content)', borderColor: 'color-mix(in oklab, var(--color-base-content) 30%, transparent)' }
+      default: return { backgroundColor: 'color-mix(in oklab, var(--color-base-content) 15%, transparent)', color: 'var(--color-base-content)', borderColor: 'color-mix(in oklab, var(--color-base-content) 30%, transparent)' }
     }
   }
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--color-base-200)' }}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading round details...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto" style={{ borderColor: 'var(--color-primary)' }}></div>
+          <p className="mt-4" style={{ color: 'color-mix(in oklab, var(--color-base-content) 70%, transparent)' }}>Loading round details...</p>
         </div>
       </div>
     )
@@ -136,12 +136,13 @@ export const RoundDetail: React.FC = () => {
 
   if (!round) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--color-base-200)' }}>
         <div className="text-center">
-          <p className="text-gray-500 text-lg">Round not found</p>
+          <p className="text-lg" style={{ color: 'color-mix(in oklab, var(--color-base-content) 60%, transparent)' }}>Round not found</p>
           <button
             onClick={() => navigate('/rounds')}
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            className="mt-4 px-4 py-2 rounded-md transition-colors"
+            style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-primary-content)' }}
           >
             Back to Rounds
           </button>

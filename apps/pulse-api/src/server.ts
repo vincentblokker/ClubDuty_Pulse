@@ -1,13 +1,13 @@
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
+import express = require('express')
+import cors = require('cors')
+import dotenv = require('dotenv')
 import { initDb } from './db'
 import { authRouter } from './routes/auth'
 import { roundsRouter } from './routes/rounds'
 import { feedbackRouter } from './routes/feedback'
 import { debugRouter } from './routes/debug'
 
-dotenv.config()
+dotenv.config({ path: process.cwd() + '/.env' })
 const app = express()
 app.use(cors())
 app.use(express.json())

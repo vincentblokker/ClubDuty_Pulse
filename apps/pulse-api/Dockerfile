@@ -19,4 +19,5 @@ COPY --from=base /app/node_modules ./node_modules
 COPY --from=base /app/dist ./dist
 # Expose default API port
 EXPOSE 5011
-CMD ["node", "dist/server.js"]
+ENTRYPOINT ["node", "dist/server.js"]
+

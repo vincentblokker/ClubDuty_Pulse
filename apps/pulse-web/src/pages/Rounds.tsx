@@ -94,38 +94,39 @@ export const Rounds: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'OPEN': return 'bg-green-100 text-green-800'
-      case 'CLOSED': return 'bg-red-100 text-red-800'
-      case 'DRAFT': return 'bg-gray-100 text-gray-800'
-      default: return 'bg-gray-100 text-gray-800'
+      case 'OPEN': return { backgroundColor: 'color-mix(in oklab, var(--color-success) 20%, transparent)', color: 'var(--color-success)' }
+      case 'CLOSED': return { backgroundColor: 'color-mix(in oklab, var(--color-error) 20%, transparent)', color: 'var(--color-error)' }
+      case 'DRAFT': return { backgroundColor: 'color-mix(in oklab, var(--color-base-content) 15%, transparent)', color: 'var(--color-base-content)' }
+      default: return { backgroundColor: 'color-mix(in oklab, var(--color-base-content) 15%, transparent)', color: 'var(--color-base-content)' }
     }
   }
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--color-base-200)' }}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading rounds...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto" style={{ borderColor: 'var(--color-primary)' }}></div>
+          <p className="mt-4" style={{ color: 'color-mix(in oklab, var(--color-base-content) 70%, transparent)' }}>Loading rounds...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-base-200)' }}>
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="shadow-sm" style={{ backgroundColor: 'var(--color-base-100)', borderBottom: '1px solid color-mix(in oklab, var(--color-base-content) 15%, transparent)' }}>
         <div className="container mx-auto">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 gap-4">
-            <h1 className="text-responsive-2xl font-bold text-gray-900">Feedback Rounds</h1>
+            <h1 className="text-responsive-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>Feedback Rounds</h1>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <span className="text-sm text-gray-600 text-center sm:text-left">
-                Team: <span className="font-medium">{user?.teamCode}</span>
+              <span className="text-sm text-center sm:text-left" style={{ color: 'color-mix(in oklab, var(--color-base-content) 70%, transparent)' }}>
+                Team: <span className="font-medium" style={{ color: 'var(--color-base-content)' }}>{user?.teamCode}</span>
               </span>
               <button
                 onClick={() => setShowCreateForm(true)}
-                className="btn-mobile bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                className="btn-mobile transition-colors"
+                style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-primary-content)' }}
               >
                 New Round
               </button>
@@ -138,18 +139,18 @@ export const Rounds: React.FC = () => {
       <main className="container mx-auto py-4 md:py-8">
         {/* Create Round Form */}
         {showCreateForm && (
-          <div className="mobile-card bg-white mb-6 md:mb-8">
-            <h2 className="text-responsive-lg font-semibold text-gray-900 mb-4">Create New Round</h2>
+          <div className="mobile-card mb-6 md:mb-8" style={{ backgroundColor: 'var(--color-base-100)' }}>
+            <h2 className="text-responsive-lg font-semibold mb-4" style={{ color: 'var(--color-base-content)' }}>Create New Round</h2>
 
             {formError && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md text-red-600 text-sm">
+              <div className="mb-4 p-3 rounded-md text-sm" style={{ backgroundColor: 'color-mix(in oklab, var(--color-error) 20%, transparent)', border: '1px solid color-mix(in oklab, var(--color-error) 50%, transparent)', color: 'var(--color-error)' }}>
                 {formError}
               </div>
             )}
 
             <form onSubmit={handleCreateRound} className="space-y-4">
               <div>
-                <label htmlFor="roundName" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="roundName" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-base-content)' }}>
                   Round Name *
                 </label>
                 <input
@@ -165,7 +166,7 @@ export const Rounds: React.FC = () => {
 
               <div className="mobile-layout gap-4">
                 <div className="flex-1">
-                  <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="startDate" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-base-content)' }}>
                     Start Date (Optional)
                   </label>
                   <input
@@ -178,7 +179,7 @@ export const Rounds: React.FC = () => {
                 </div>
 
                 <div className="flex-1">
-                  <label htmlFor="endDate" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="endDate" className="block text-sm font-medium mb-2" style={{ color: 'var(--color-base-content)' }}>
                     End Date (Optional)
                   </label>
                   <input
@@ -195,7 +196,8 @@ export const Rounds: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isCreating || !newRoundName.trim()}
-                  className="btn-mobile flex-1 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-mobile flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ backgroundColor: 'var(--color-primary)', color: 'var(--color-primary-content)' }}
                 >
                   {isCreating ? 'Creating...' : 'Create Round'}
                 </button>
@@ -208,7 +210,8 @@ export const Rounds: React.FC = () => {
                     setNewRoundEndDate('')
                     setFormError('')
                   }}
-                  className="btn-mobile flex-1 border border-gray-300 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  className="btn-mobile flex-1"
+                  style={{ border: '1px solid color-mix(in oklab, var(--color-base-content) 30%, transparent)', color: 'color-mix(in oklab, var(--color-base-content) 70%, transparent)', backgroundColor: 'transparent' }}
                 >
                   Cancel
                 </button>
@@ -220,28 +223,28 @@ export const Rounds: React.FC = () => {
         {/* Rounds List */}
         {rounds.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No rounds yet</p>
-            <p className="text-gray-400 mt-2">Create your first feedback round to get started</p>
+            <p className="text-lg" style={{ color: 'color-mix(in oklab, var(--color-base-content) 60%, transparent)' }}>No rounds yet</p>
+            <p className="mt-2" style={{ color: 'color-mix(in oklab, var(--color-base-content) 50%, transparent)' }}>Create your first feedback round to get started</p>
           </div>
         ) : (
           <div className="grid grid-responsive-3 gap-4">
             {rounds.map((round) => (
-              <div key={round.id} className="mobile-card bg-white">
+              <div key={round.id} className="mobile-card" style={{ backgroundColor: 'var(--color-base-100)' }}>
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-2">
-                  <h3 className="text-responsive-lg font-semibold text-gray-900 flex-1">{round.name}</h3>
-                  <span className={`px-2 py-1 text-xs font-medium rounded-full self-start ${getStatusColor(round.status)}`}>
+                  <h3 className="text-responsive-lg font-semibold flex-1" style={{ color: 'var(--color-base-content)' }}>{round.name}</h3>
+                  <span className="px-2 py-1 text-xs font-medium rounded-full self-start" style={getStatusColor(round.status)}>
                     {round.status}
                   </span>
                 </div>
 
-                <div className="space-y-2 text-sm text-gray-600 mb-4">
+                <div className="space-y-2 text-sm mb-4">
                   <div className="mobile-layout">
-                    <span className="text-gray-600">Assignments:</span>
-                    <span className="font-medium">{round.assignmentsCount}</span>
+                    <span style={{ color: 'color-mix(in oklab, var(--color-base-content) 70%, transparent)' }}>Assignments:</span>
+                    <span className="font-medium" style={{ color: 'var(--color-base-content)' }}>{round.assignmentsCount}</span>
                   </div>
                   <div className="mobile-layout">
-                    <span className="text-gray-600">Created:</span>
-                    <span className="font-medium text-xs">{new Date(round.createdAt).toLocaleDateString()}</span>
+                    <span style={{ color: 'color-mix(in oklab, var(--color-base-content) 70%, transparent)' }}>Created:</span>
+                    <span className="font-medium text-xs" style={{ color: 'var(--color-base-content)' }}>{new Date(round.createdAt).toLocaleDateString()}</span>
                   </div>
                 </div>
 
@@ -249,7 +252,8 @@ export const Rounds: React.FC = () => {
                   {round.status === 'DRAFT' && (
                     <button
                       onClick={() => handleStatusChange(round.id, 'OPEN')}
-                      className="btn-mobile flex-1 bg-green-600 hover:bg-green-700 transition-colors text-sm"
+                      className="btn-mobile flex-1 transition-colors text-sm"
+                      style={{ backgroundColor: 'var(--color-success)', color: 'var(--color-success-content)' }}
                     >
                       Open Round
                     </button>
@@ -258,7 +262,8 @@ export const Rounds: React.FC = () => {
                   {round.status === 'OPEN' && (
                     <button
                       onClick={() => handleStatusChange(round.id, 'CLOSED')}
-                      className="btn-mobile flex-1 bg-red-600 hover:bg-red-700 transition-colors text-sm"
+                      className="btn-mobile flex-1 transition-colors text-sm"
+                      style={{ backgroundColor: 'var(--color-error)', color: 'var(--color-error-content)' }}
                     >
                       Close Round
                     </button>
@@ -266,7 +271,8 @@ export const Rounds: React.FC = () => {
 
                   <button
                     onClick={() => navigate(`/rounds/${round.id}`)}
-                    className="btn-mobile flex-1 bg-gray-600 hover:bg-gray-700 transition-colors text-sm"
+                    className="btn-mobile flex-1 transition-colors text-sm"
+                    style={{ backgroundColor: 'var(--color-neutral)', color: 'var(--color-neutral-content)' }}
                   >
                     View Details
                   </button>
